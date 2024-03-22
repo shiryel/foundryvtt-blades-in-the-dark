@@ -10,7 +10,7 @@ export class BladesHelpers {
    */
   static removeDuplicatedItemType(item_data, actor) {
     let dupe_list = [];
-    let distinct_types = ["crew_type", "crew_reputation", "class", "vice", "background", "heritage"];
+    let distinct_types = ["crew_type", "crew_reputation", "class", "vice", "background", "heritage", "prison"];
     let allowed_types = ["item"];
     let should_be_distinct = distinct_types.includes(item_data.type);
     // If the Item has the exact same name - remove it from list.
@@ -161,7 +161,9 @@ export class BladesHelpers {
   }
 
   /* -------------------------------------------- */
-
+  static getProperCase( name ) {
+    return name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
+  }
   /**
    * Creates options for faction clocks.
    *
@@ -192,5 +194,89 @@ export class BladesHelpers {
     return text;
 
   }
+  // adds an NPC to the character as an acquaintance of neutral standing
+  static async addAcquaintance(actor, acq){
+    let current_acquaintances = actor.system.acquaintances;
+    let acquaintance = {
+      id : acq.id,
+      name : acq.name,
+      description_short : acq.system.description_short,
+      standing: "neutral"
+     };
+     let unique_id =  !current_acquaintances.some((oldAcq) => {
+       return oldAcq.id == acq.id;
+     });
+     if(unique_id){
+       await actor.update({data: {acquaintances : current_acquaintances.concat([acquaintance])}});
+     }
+     else{
+       ui.notifications.info("The dropped NPC is already an acquaintance of this character.");
+    }
+  }
+   static async removeAcquaintance(actor, acqId){
+    let current_acquaintances = actor.system.acquaintances;
+    let updated_acquaintances = current_acquaintances.filter(acq => acq._id !== acqId && acq.id !== acqId);
+	await actor.update({data: {acquaintances : updated_acquaintances}});
+  }
+ 
+  static async getAllItemsByType(item_type) {
 
+    let list_of_items = [];
+    let world_items = [];
+    let compendium_items = [];
+    
+    if(item_type === "npc"){
+      world_items = game.actors.filter(e => e.type === item_type).map(e => {return e});
+    }
+    else{
+      world_items = game.items.filter(e => e.type === item_type).map(e => {return e});
+    }
+
+    let pack = game.packs.find(e => e.metadata.name === item_type);
+    let compendium_content = await pack.getDocuments();
+    compendium_items = compendium_content.map(e => {return e});
+
+    list_of_items = world_items.concat(compendium_items);
+    list_of_items.sort(function(a, b) {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+      return nameA.localeCompare(nameB);
+    });
+    return list_of_items;
+
+  }
+
+  static async getSourcedItemsByType(item_type){
+      const limited_items = await this.getAllItemsByType(item_type);
+    return limited_items;
+  }
+    static async getItemByType(item_type, item_id){
+    let game_items = await this.getAllItemsByType(item_type);
+    let item = game_items.find(item => item.id === item_id);
+    return item;
+  }
+  
+  static async getPlaybookAcquaintances(actor_type, selected_playbook){
+    let all_acquaintances = await this.getSourcedItemsByType('npc');
+	let playbook_acquaintances = [];
+	if (actor_type == "character") {
+		playbook_acquaintances = all_acquaintances.filter(i => i.system.associated_class === selected_playbook);
+	} else if (actor_type == "crew") {
+		playbook_acquaintances = all_acquaintances.filter(i => i.system.associated_crew_type === selected_playbook);
+	}
+	return playbook_acquaintances;
+
+  }
+  
+  	static async import_pb_contacts(actor, playbook){
+	  const pb_type = await actor.type;
+	  const pb_actor = await this.getPlaybookAcquaintances(pb_type, playbook);
+	  const LM = pb_actor.length;
+	  let i = 0;
+	  while(i<LM){
+	  const new_acq= pb_actor[i];
+	  await this.addAcquaintance(actor, new_acq);
+	  i++;}
+	}
+  
 }

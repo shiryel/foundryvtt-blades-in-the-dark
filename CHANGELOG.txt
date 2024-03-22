@@ -1,3 +1,16 @@
+v.5.0.0
+- Added options for clock actors to go to 10 and 12 parts and have color. Edited the layout of the clock sheet html.
+- Added acquintances to character sheet and to crew sheet with the option to import the default acquaintances by playbook
+- Added Prison claims to the crew sheet
+- Added a spot to include crew Hunting Grounds on Crew Sheet
+- Added Active Effects to the crew sheet
+- organized the compendiums into folders
+- Traumas pull from system.trauma.options instead of being hardcoded into HTML
+- Fixed entanglements macro to keep highest die when rolling more than one die
+- Added French language
+- Other minor html updates for better usability
+- Other minor fixes and updates
+
 v.4.8
 - Fix CSS namespace collisions #202 (@drewg13)
 - Adds Automatic generated version in system.json

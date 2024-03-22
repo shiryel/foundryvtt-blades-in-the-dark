@@ -7,12 +7,12 @@
     <div id="crew-{{_id}}-name-alias" class="crew-name-alias grow-two flex-column">
       <div id="crew-{{_id}}-name-box" class="crew-name">
         <label for="crew-{{_id}}-name">{{localize "BITD.Name"}}</label>
-        <input type="text" id="crew-{{_id}}-name" name="name" value="{{name}}">
+        <input type="text" id="crew-{{_id}}-name" name="name" value="{{name}}" placeholder="{{localize "BITD.CrewName"}}">
       </div>
 
-      <div class="flex-vertical">
+      <div class="item-crew-rep flex-horizontal">
         <div class="item-class-label">
-          <a class="item-add-popup" data-distinct="true" data-item-type="crew_reputation">{{localize "BITD.CrewReputation"}}</a>
+          <a class="item-add-popup" data-distinct="true" data-item-type="crew_reputation">{{localize "BITD.CrewReputation"}}:</a>
         </div>
         {{#each items as |item id|}}
         {{#if (eq item.type "crew_reputation")}}
@@ -32,7 +32,7 @@
     <div class="grow-two flex-vertical">
       <div id="crew-{{_id}}-lair-box" class="lair">
         <label for="crew-{{_id}}-lair">{{localize "BITD.Lair"}}</label>
-        <input type="text" id="crew-{{_id}}-lair" name="system.lair" value="{{system.lair}}">
+        <input type="text" id="crew-{{_id}}-lair" name="system.lair" value="{{system.lair}}" placeholder="{{localize "BITD.Lair"}} {{localize "BITD.Description"}}">
       </div>
 
 
@@ -201,22 +201,46 @@
   <section class="flex-horizontal">
 
     <div class="flex-vertical">
-
-      <div id="crew-{{_id}}-class" class="class-name crew-class" data-tooltip="{{localize "BITD.CrewTypeBox"}}" data-distinct="true" data-item-type="crew_type">
-        {{#each items as |item id|}}
-        {{#if (eq item.type "crew_type")}}
-        <div class="big-name">{{item.name}}</div>
-        <div class="big-description">{{item.system.description}}</div>
+	  <div class="flex-horizontal">
+        <div id="crew-{{_id}}-class" class="class-name crew-class flex-vertical" data-tooltip="{{localize "BITD.CrewTypeBox"}}" data-distinct="true" data-item-type="crew_type">
+          {{#each items as |item id|}}
+          {{#if (eq item.type "crew_type")}}
+          <div class="big-name">{{item.name}}</div>
+          <div class="big-description">{{{item.system.description}}}</div>
+          {{/if}}
+          {{/each}}
+        </div>
+	  <div class="hunting-ground flex-column">
+	    <div class="hunting-ground-label">
+		  <a class="item-add-popup" data-item-type="hunting_grounds">{{localize system.hunting_grounds_label}}</a>
+		</div>
+		{{#each items as |item id|}}
+        {{#if (eq item.type "hunting_grounds")}}
+          <div class="item flex-horizontal" data-item-id="{{item._id}}">
+            <div class="item-body item-sheet-open flex-horizontal">
+              <img src="{{item.img}}" title="{{item.name}}" width="20" height="20"/>
+              <div class="item-name">{{item.name}}</div>
+            </div>
+            <a class="item-control item-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+            <a class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
+          </div>
         {{/if}}
         {{/each}}
-      </div>
+	  </div>
+	  
+	  </div>
       <nav class="tabs flex-horizontal">
         <a class="item" data-tab="turfs">{{localize "BITD.Turfs"}}</a>
         <a class="item" data-tab="upgrades">{{localize "BITD.Upgrades"}}</a>
         <a class="item" data-tab="abilities">{{localize "BITD.Abilities"}}</a>
+        <a class="item" data-tab="contacts">{{localize "BITD.Contacts"}}</a>
         <a class="item" data-tab="cohorts">{{localize "BITD.Cohorts"}}</a>
+        <a class="item" data-tab="prison">{{localize "BITD.Prison"}}</a>
         <a class="item" data-tab="notes">{{localize "BITD.Notes"}}</a>
         <a class="item" data-tab="all-items">{{localize "BITD.AllItems"}}</a>
+		{{#if isGM}}
+        <a class="item" data-tab="effects">{{localize "BITD.Effects"}}</a>
+        {{/if}}
       </nav>
     </div>
 
@@ -257,7 +281,7 @@
       {{#each items as |item id|}}
       {{#if (eq item.type "crew_type")}}
       <div class="item" data-item-id="{{item._id}}">
-      {{> "systems/blades-in-the-dark/templates/parts/turf-list.html" _id=../_id turfs_data=item.system.turfs can_edit=false}}
+      {{> "systems/blades-in-the-dark/templates/parts/turf-list.html" _id=../_id turfs_data=item.system.turfs can_edit=false not_prison=true}}
       </div>
       {{/if}}
       {{/each}}
@@ -304,6 +328,32 @@
       {{/each}}
     </div>
 
+    {{!-- Contacts --}}
+	<div id="crew-{{_id}}-contacts" class="tab flex-vertical" data-tab="contacts">
+		<div class="label-stripe flex-horizontal">
+			<p>{{localize "BITD.Contacts"}}</p>
+			<p><a class="import-contacts" title="{{localize 'BITD.ImportPlaybookContacts'}}"><i class="fa-solid fa-file-import"></i></a></p>
+		</div>
+            {{#if system.acquaintances}}
+			{{#each system.acquaintances as |item id|}}
+		<div class="item flex-horizontal" data-item-id="{{item.id}}" data-item-type="{{item.type}}">
+                <div class="acquaintance" data-acquaintance="{{this.id}}">
+                  <i data-acquaintance="{{this.id}}" class="standing-toggle fas
+                    {{#if (eq this.standing "friend" )}} fa-caret-up green-icon
+                    {{else if (eq this.standing "rival")}} fa-caret-down red-icon
+                    {{else}}fa-minus
+                    {{/if}}"></i>
+                    <class="standing-toggle"><a class="open-friend"><strong>{{this.name}}</strong></a>, {{this.description_short}}
+					<!--
+					<a class="acquaintance-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+					-->
+				</div>
+			<a class="acquaintance-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+		</div>
+			  {{/each}}
+            {{/if}}
+      </div>
+
     {{!-- Cohorts --}}
     <div id="crew-{{_id}}-cohorts" class="crew-cohorts tab grow-two flex-vertical" data-tab="cohorts">
       <div class="label-stripe flex-horizontal">
@@ -320,6 +370,21 @@
         {{/each}}
       </div>
     </div>
+	
+    {{!-- Prison --}}
+    <div id="crew-{{_id}}-prison" class="tab" data-tab="prison">
+      <div class="label-stripe flex-horizontal">
+        <p><label>{{localize "BITD.Prison"}}</label></p>
+		<p><a class="item-add-popup" data-distinct="true" data-item-type="prison"><i class="fas fa-plus-square"></i></a></p>
+      </div>
+      {{#each items as |item id|}}
+      {{#if (eq item.type "prison")}}
+      <div class="item" data-item-id="{{item._id}}">
+      {{> "systems/blades-in-the-dark/templates/parts/turf-list.html" _id=../_id turfs_data=item.system.turfs can_edit=false not_prison=false}}
+      </div>
+      {{/if}}
+      {{/each}}
+    </div>
 
     {{!-- Notes --}}
     <div id="crew-{{_id}}-notes" class="notes tab grow-two flex-vertical" data-tab="notes">
@@ -328,6 +393,17 @@
       </div>
       <textarea rows="15" name="system.description">{{{system.description}}}</textarea>
     </div>
+
+      {{!-- Active Effects --}}
+	  {{#if isGM}}
+      <div id="crew-{{_id}}-effects" class="tab effects flex-vertical" data-tab="effects">
+        <div class="label-stripe">
+          <p>{{localize "BITD.Effects"}}</p>
+        </div>
+        {{> "systems/blades-in-the-dark/templates/parts/active-effects.html"}}
+      </div>
+	  {{/if}}
+
 
     {{!-- Full Item List --}}
     <div class="tab grow-two flex-vertical" data-tab="all-items">

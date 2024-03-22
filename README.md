@@ -9,7 +9,6 @@
 
 If you like our work - use the system, use it all, and may the shadows cover your way.
 
-Contact Discord: `megastruktur#5704` in case you find any bugs or if you have any suggestions.
 
 ## Usage
 `"Item" - all classes, crew types, upgrades, items, abilities, upgrades, etc.`
@@ -46,7 +45,7 @@ Crew Types:
 
 ## Screenshots
 
-### Character Sheet, Crew Sheet and Class
+### Character Sheet, Crew Sheet and Clock
 ![alt screen][screenshot_all]
 
 ### Compendium
@@ -61,22 +60,20 @@ Clocks are now here!
 - To add clock go to Actors tab and create a new Actor of type "🕛 clock".
 - To share it to other players just drag it to a scene.
 
-### Operators list
-- `addition` - is added when item is attached and substracted when removed
-- `attribute_change` - changes the "attribute" to value and when removed - uses the "attribute_default" to restore
-
 ## Supported Languages
 - English
 - Russian (Русский)
 - Spanish (Español)
 - Polish (Język Polski)
 - German (Deutsch)
+- French (Français)
 
 ## Troubleshooting
 - If you can't find the drag-n-dropped item, refer to "All Items" tab on each sheet.
 
 ## Credits
 - This work is based on Blades in the Dark (found at http://www.bladesinthedark.com/), product of One Seven Design, developed and authored by John Harper, and licensed for our use under the Creative Commons Attribution 3.0 Unported license (http://creativecommons.org/licenses/by/3.0/).
+- This game system for FoundryVTT was originally made and maintained by Megastruktur (https://github.com/megastruktur/foundryvtt-blades-in-the-dark_)
 - Some assets were taken from here (thank you  timdenee and joesinghaus): https://github.com/joesinghaus/Blades-in-the-Dark
 
 

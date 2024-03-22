@@ -12,7 +12,7 @@ export class BladesClockSheet extends BladesSheet {
 	  return foundry.utils.mergeObject(super.defaultOptions, {
   	  classes: ["blades-in-the-dark", "sheet", "actor", "clock"],
   	  template: "systems/blades-in-the-dark/templates/actors/clock-sheet.html",
-      width: 420,
+      width: 360,
       height: 400,
     });
   }
@@ -34,7 +34,7 @@ export class BladesClockSheet extends BladesSheet {
 
   /** @override */
   async _updateObject(event, formData) {
-    let image_path = `systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock ${formData['system.type']}-${formData['system.value']}.svg`;
+    let image_path = `systems/blades-in-the-dark/themes/${formData['system.color']}/${formData['system.type']}clock_${formData['system.value']}.svg`;
     formData['img'] = image_path;
     formData['prototypeToken.texture.src'] = image_path;
     let data = [];

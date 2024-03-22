@@ -131,35 +131,35 @@
     <div id="character-{{_id}}-trauma-list" class="trauma-list">
       <label>
         <input type="checkbox" data-dType="Boolean" name="system.trauma.list.cold" value="cold" {{checked system.trauma.list.cold}}>
-        <span class="checkmark">{{localize "BITD.TraumaCold"}}</span>
+		<span class="checkmark">{{localize system.trauma.options.[0]}}</span>
       </label>
       <label>
         <input type="checkbox" data-dType="Boolean" name="system.trauma.list.haunted" value="haunted" {{checked system.trauma.list.haunted}}>
-        <span class="checkmark">{{localize "BITD.TraumaHaunted"}}</span>
+        <span class="checkmark">{{localize system.trauma.options.[1]}}</span>
       </label>
       <label>
         <input type="checkbox" data-dType="Boolean" name="system.trauma.list.obsessed" value="obsessed" {{checked system.trauma.list.obsessed}}>
-        <span class="checkmark">{{localize "BITD.TraumaObsessed"}}</span>
+        <span class="checkmark">{{localize system.trauma.options.[2]}}</span>
       </label>
       <label>
         <input type="checkbox" data-dType="Boolean" name="system.trauma.list.paranoid" value="paranoid" {{checked system.trauma.list.paranoid}}>
-        <span class="checkmark">{{localize "BITD.TraumaParanoid"}}</span>
+        <span class="checkmark">{{localize system.trauma.options.[3]}}</span>
       </label>
       <label>
         <input type="checkbox" data-dType="Boolean" name="system.trauma.list.reckless" value="reckless" {{checked system.trauma.list.reckless}}>
-        <span class="checkmark">{{localize "BITD.TraumaReckless"}}</span>
+        <span class="checkmark">{{localize system.trauma.options.[4]}}</span>
       </label>
       <label>
         <input type="checkbox" data-dType="Boolean" name="system.trauma.list.soft" value="soft" {{checked system.trauma.list.soft}}>
-        <span class="checkmark">{{localize "BITD.TraumaSoft"}}</span>
+        <span class="checkmark">{{localize system.trauma.options.[5]}}</span>
       </label>
       <label>
         <input type="checkbox" data-dType="Boolean" name="system.trauma.list.unstable" value="unstable" {{checked system.trauma.list.unstable}}>
-        <span class="checkmark">{{localize "BITD.TraumaUnstable"}}</span>
+        <span class="checkmark">{{localize system.trauma.options.[6]}}</span>
       </label>
       <label>
         <input type="checkbox" data-dType="Boolean" name="system.trauma.list.vicious" value="vicious" {{checked system.trauma.list.vicious}}>
-        <span class="checkmark">{{localize "BITD.TraumaVicious"}}</span>
+        <span class="checkmark">{{localize system.trauma.options.[7]}}</span>
       </label>
     </div>
 
@@ -183,7 +183,7 @@
             <td>{{localize "BITD.NeedHelp"}}</td>
             <td rowspan="3">
               <div id="character-{{_id}}-health-clock" class="character-health-clock">
-                {{{blades-clock "system.healing-clock" 4 system.healing-clock _id}}}
+				{{{blades-clock "system.healing-clock" 4 system.healing-clock _id}}}
               </div>
             </td>
             <td rowspan="3" id="character-{{_id}}-armor-uses" class="character-armor-uses">
@@ -238,6 +238,7 @@
       <nav class="tabs flex-horizontal">
         <a class="item" data-tab="abilities">{{localize "BITD.Abilities"}}</a>
         <a class="item" data-tab="loadout">{{localize "BITD.Loadout"}}</a>
+		<a class="item" data-tab="contacts">{{localize 'BITD.Contacts'}}</a>
         <a class="item" data-tab="character-notes">{{localize "BITD.Notes"}}</a>
         {{#if isGM}}
           <a class="item" data-tab="effects">{{localize "BITD.Effects"}}</a>
@@ -312,6 +313,32 @@
           <p>{{localize "BITD.Notes"}}</p>
         </div>
         <textarea rows="13" name="system.description">{{{system.description}}}</textarea>
+      </div>
+
+      {{!-- Contacts --}}
+	  <div id="character-{{_id}}-contacts" class="tab flex-vertical" data-tab="contacts">
+        <div class="label-stripe flex-horizontal">
+          <p>{{localize system.acquaintances_label}}</p>
+		  <p><a class="import-contacts" title="{{localize 'BITD.ImportPlaybookContacts'}}"><i class="fa-solid fa-file-import"></i></a></p>
+        </div>
+              {{#if system.acquaintances}}
+			  {{#each system.acquaintances as |item id|}}
+              <div class="item flex-horizontal" data-item-id="{{item.id}}" data-item-type="{{item.type}}">
+                 <div class="acquaintance" data-acquaintance="{{this.id}}">
+                  <i data-acquaintance="{{this.id}}" class="standing-toggle fas
+                    {{#if (eq this.standing "friend" )}} fa-caret-up green-icon
+                    {{else if (eq this.standing "rival")}} fa-caret-down red-icon
+                    {{else}}fa-minus
+                    {{/if}}"></i>
+                    <class="standing-toggle"><a class="open-friend"><strong>{{this.name}}</strong></a>, {{this.description_short}}
+					<!--
+					<a class="acquaintance-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+					-->
+				 </div>
+				 <a class="acquaintance-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+			  </div>
+			  {{/each}}
+            {{/if}}
       </div>
 
       {{!-- Active Effects --}}

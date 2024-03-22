@@ -25,7 +25,7 @@
       "value": [0],
       "name": "BITD.Trauma",
       "name_default": "BITD.Trauma",
-      "options": ["cold", "haunted", "obsessed", "paranoid", "reckless", "soft", "unstable", "vicious"],
+      "options": ["BITD.TraumaCold", "BITD.TraumaHaunted", "BITD.TraumaObsessed", "BITD.TraumaParanoid", "BITD.TraumaReckless", "BITD.TraumaSoft", "BITD.TraumaUnstable", "BITD.TraumaVicious"],
       "list": []
     },
     "healing-clock": [0],
@@ -164,7 +164,11 @@
     "turfs": [8],
     "features": [],
     "heat": [0],
-    "wanted": [0]
+    "wanted": [0],
+    "acquaintances": [],
+    "acquaintances_label": "BITD.Contacts",
+    "hunting_grounds": [],
+    "hunting_grounds_label": "BITD.HuntingGrounds"
   },
   "\uD83D\uDD5B clock": {
     "name": "",
@@ -186,7 +190,7 @@
     }
   },
   "Item": {
-    "types": ["faction", "item", "class", "ability", "heritage", "background", "vice", "crew_upgrade", "cohort", "crew_type", "crew_reputation", "crew_upgrade", "crew_ability"],
+    "types": ["faction", "item", "class", "ability", "heritage", "background", "vice", "hunting_grounds", "crew_upgrade", "cohort", "crew_type", "crew_reputation", "crew_upgrade", "crew_ability", "prison"],
     "templates": {
       "default": {
         "description": ""
@@ -304,6 +308,10 @@
   },
   "vice": {
     "templates": ["default", "activatedEffect"]
+  },
+  "hunting_grounds": {
+    "templates": ["default", "activatedEffect"],
+        "class": ""
   },
   "cohort": {
     "templates": ["default"],
@@ -432,6 +440,7 @@
     "templates": ["ability", "activatedEffect"]
   },
   "crew_type": {
+    "templates": ["activatedEffect"],
     "description": "",
     "experience_clues": "",
     "turfs": {
@@ -520,6 +529,83 @@
         "connects": []
       },
       "15": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      }
+    }
+  },
+  "prison": {
+    "description": "",
+    "turfs": {
+      "1": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "2": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "3": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "4": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "5": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "6": {
+        "name": "BITD.Prison",
+        "value": 1,
+        "description": "",
+        "connects": []
+      },
+      "7": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "8": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "9": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "10": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "11": {
+        "name": "",
+        "value": "",
+        "description": "",
+        "connects": []
+      },
+      "12": {
         "name": "",
         "value": "",
         "description": "",

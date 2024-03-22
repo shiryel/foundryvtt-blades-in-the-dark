@@ -236,21 +236,26 @@
 .blades-in-the-dark td {
   padding: 5px;
 }
+/* --Controls minimum size of windows--*/
 .blades-in-the-dark {
-  min-width: 420px;
+  min-width: 360px;
   min-height: 320px;
 }
+/* --Start Clocks--*/
 .blades-in-the-dark .clock-zero-label {
   color: #191813;
 }
 .blades-in-the-dark .clocks.clocks-4 {
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
 }
 .blades-in-the-dark .clocks.clocks-4 .blades-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -292,12 +297,15 @@
 }
 .blades-in-the-dark .clocks.clocks-6 {
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
 }
 .blades-in-the-dark .clocks.clocks-6 .blades-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -345,12 +353,15 @@
 }
 .blades-in-the-dark .clocks.clocks-8 {
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock {
   position: relative;
   padding: 0;
-  width: 200px;
-  height: 200px;
+  width: 225px;
+  height: 225px;
   border-radius: 50%;
   list-style: none;
   overflow: hidden;
@@ -379,35 +390,215 @@
   display: none;
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock *:nth-child(3) {
-  transform: rotate(0deg) skewY(135deg);
+  transform: rotate(0deg) skewY(120deg);
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock *:nth-child(5) {
-  transform: rotate(45deg) skewY(135deg);
+  transform: rotate(45deg) skewY(120deg);
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock *:nth-child(7) {
-  transform: rotate(90deg) skewY(135deg);
+  transform: rotate(90deg) skewY(120deg);
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock *:nth-child(9) {
-  transform: rotate(135deg) skewY(135deg);
+  transform: rotate(135deg) skewY(120deg);
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock *:nth-child(11) {
-  transform: rotate(180deg) skewY(135deg);
+  transform: rotate(180deg) skewY(120deg);
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock *:nth-child(13) {
-  transform: rotate(225deg) skewY(135deg);
+  transform: rotate(225deg) skewY(120deg);
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock *:nth-child(15) {
-  transform: rotate(270deg) skewY(135deg);
+  transform: rotate(270deg) skewY(120deg);
 }
 .blades-in-the-dark .clocks.clocks-8 .blades-clock *:nth-child(17) {
-  transform: rotate(315deg) skewY(135deg);
+  transform: rotate(315deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-10 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock {
+  position: relative;
+  padding: 0;
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  list-style: none;
+  overflow: hidden;
+  background-size: cover;
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock label {
+  overflow: hidden;
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0% 100%;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock label:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock input {
+  position: absolute;
+  display: none;
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock input[value="0"] {
+  display: none;
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(3) {
+  transform: rotate(0deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(5) {
+  transform: rotate(36deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(7) {
+  transform: rotate(72deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(9) {
+  transform: rotate(108deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(11) {
+  transform: rotate(144deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(13) {
+  transform: rotate(180deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(15) {
+  transform: rotate(216deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(17) {
+  transform: rotate(252deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(19) {
+  transform: rotate(288deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-10 .blades-clock *:nth-child(21) {
+  transform: rotate(324deg) skewY(135deg);
+}
+.blades-in-the-dark .clocks.clocks-12 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock {
+  position: relative;
+  padding: 0;
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  list-style: none;
+  overflow: hidden;
+  background-size: cover;
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock label {
+  overflow: hidden;
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0% 100%;
+  transition: filter 0.1s;
+  cursor: pointer;
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock label:hover {
+  filter: brightness(0.8);
+  opacity: 0.9;
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock input {
+  position: absolute;
+  display: none;
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock input[value="0"] {
+  display: none;
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(3) {
+  transform: rotate(0deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(5) {
+  transform: rotate(30deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(7) {
+  transform: rotate(60deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(9) {
+  transform: rotate(90deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(11) {
+  transform: rotate(120deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(13) {
+  transform: rotate(150deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(15) {
+  transform: rotate(180deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(17) {
+  transform: rotate(210deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(19) {
+  transform: rotate(240deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(21) {
+  transform: rotate(270deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(23) {
+  transform: rotate(300deg) skewY(120deg);
+}
+.blades-in-the-dark .clocks.clocks-12 .blades-clock *:nth-child(25) {
+  transform: rotate(330deg) skewY(120deg);
 }
 .blades-in-the-dark .blades-clock-name-type > * {
   margin-bottom: 10px;
 }
-.blades-in-the-dark .blades-clock-name-type .blades-clock {
-  margin: 10px auto;
+.blades-in-the-dark .blades-clock-name {
+    height: 60px;
+    text-align: center;
+	margin: 10px auto;
 }
+.blades-in-the-dark .clock-name input {
+    height: 40px;
+    line-height: 48px;
+    font-size: 32px;
+    width: 100%;
+    background: none;
+    border: 1px solid transparent;
+    padding: 1px 3px;
+    font-family: "Kirsty", "Crimson Text", serif;
+    border-radius: 3px;
+    color: rgb(25, 24, 19);
+    margin: 3px;
+	text-align: center;
+}
+.blades-in-the-dark .clock-name.editable input:hover,
+.blades-in-the-dark .clock-name.editable input:focus {
+    border: 1px solid rgb(25, 24, 19);
+}
+.blades-in-the-dark .clock-config {
+    text-align: center;
+}
+.blades-in-the-dark .clock-config .clock-config-group {
+    margin-left: 1.5em;
+    display: inline-block;
+}
+.blades-in-the-dark .clock-config .clock-config-group:first-child {
+    margin-left: 0;
+}
+.blades-in-the-dark .clock-config .clock-config-group label {
+    margin-right: 3px;
+}
+.blades-in-the-dark .clock-config .clock-config-group select {
+    width: 100px;
+}
+/* --End Clocks-- */
 .blades-in-the-dark.crew.sheet .coins {
   display: flex;
   /* Hide the browser's default checkbox */
@@ -481,8 +672,20 @@
 .blades-in-the-dark.crew.sheet .item .item-class-label {
   width: 100px;
 }
+.blades-in-the-dark.crew.sheet .item-crew-rep {
+  height: 50px;
+  padding-top: 10px;
+  justify-content: start;
+}
 .blades-in-the-dark.crew.sheet .item-class-label {
+  margin-top: 4px;
   margin-bottom: 10px;
+  font-weight: bold;
+  width: 125px;
+}
+.blades-in-the-dark.crew.sheet .item-crew-rep .item {
+  margin-bottom: 10px;
+  width: 150px;
 }
 .blades-in-the-dark.crew.sheet .name,
 .blades-in-the-dark.crew.sheet .lair {
@@ -492,6 +695,7 @@
   padding: 20px;
 }
 .blades-in-the-dark.crew.sheet nav {
+  width: 512px;
   padding-bottom: 10px;
 }
 .blades-in-the-dark.crew.sheet .crew-coins {
@@ -832,6 +1036,18 @@
 .blades-in-the-dark.crew.sheet .gang-expert-type-selector .gang-type-boxes {
   flex-wrap: wrap;
 }
+.blades-in-the-dark.crew.sheet .acquaintance i {
+  padding: 1px;
+  margin-right: 3px;
+  width: 1.2em;
+  text-align: center;
+}
+.blades-in-the-dark.crew.sheet .acquaintance i.red-icon {
+  color: #880000;
+}
+.blades-in-the-dark.crew.sheet .acquaintance i.green-icon {
+  color: #006600;
+}
 .blades-in-the-dark.crew.sheet .cohorts {
   flex-wrap: wrap;
 }
@@ -880,14 +1096,24 @@
   text-align: center;
 }
 .blades-in-the-dark.crew.sheet .class-name {
-  width: 512px;
-  height: 120px;
+  width: 320px;
+  height: 135px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   font-size: 48px;
   text-transform: uppercase;
   border: 3px solid #191813;
+}
+.blades-in-the-dark.crew.sheet .hunting-ground {
+  width: 180px;
+  height: 120px;
+  text-align: center;
+}
+.blades-in-the-dark.crew.sheet .hunting-ground-label a {
+  font-size: 16px;
+  font-family: "Crimson Text", serif;
+  font-weight: bold;
 }
 .blades-in-the-dark.crew.sheet .class-name .big-name {
   font-weight: bold;
@@ -1335,7 +1561,7 @@
 .blades-in-the-dark.actor.pc * .attributes {
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 225px;
 }
 .blades-in-the-dark.actor.pc * .attributes .stripe {
   background-color: #191813;
@@ -1462,10 +1688,7 @@
 .blades-in-the-dark.actor.pc * .item .item-control {
   flex-grow: 1;
 }
-.blades-in-the-dark.actor.pc * .item .item-body,
-.blades-in-the-dark.actor.pc * .item .item-class-label {
-  width: 100px;
-}
+
 .blades-in-the-dark.actor.pc * .item-class-label {
   margin-bottom: 10px;
 }
@@ -1523,6 +1746,22 @@
 .blades-in-the-dark.actor.pc * .coins.coins-stashed {
   width: 190px;
 }
+.blades-in-the-dark.actor.pc * .acquaintance {
+  line-height: 1em;
+  padding: 2px 5px;
+}
+.blades-in-the-dark.actor.pc * .acquaintance i {
+  padding: 1px;
+  margin-right: 3px;
+  width: 1.2em;
+  text-align: center;
+}
+.blades-in-the-dark.actor.pc * .acquaintance i.red-icon {
+  color: #880000;
+}
+.blades-in-the-dark.actor.pc * .acquaintance i.green-icon {
+  color: #006600;
+}
 .blades-in-the-dark.item.sheet .item {
   justify-content: space-between;
 }
@@ -1544,12 +1783,28 @@
 }
 .blades-in-the-dark.item.sheet .item .item-body,
 .blades-in-the-dark.item.sheet .item .item-class-label {
-  width: 100px;
+  width: auto;
 }
 .blades-in-the-dark.item.sheet .item-class-label {
   margin-bottom: 10px;
 }
-
+.blades-in-the-dark .npc-sheet .text-line {
+  height: 26px;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+  width: 200px;
+  text-align: right;
+  font-family: Kirsty, serif;
+}
+.blades-in-the-dark .npc-sheet {
+  justify-content: start;
+}
+.blades-in-the-dark .npc-sheet img {
+  margin: 20px;
+}
+.blades-in-the-dark .npc-lines {
+  width: 700px;
+}
 .chat-label {
   background-color: #191813;
   font-family: Kirsty, serif;
@@ -1647,5 +1902,6 @@
 .items-to-add .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
 
 /*# sourceMappingURL=blades.css.map */

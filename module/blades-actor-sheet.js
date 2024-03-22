@@ -1,6 +1,6 @@
-
 import { BladesSheet } from "./blades-sheet.js";
 import { BladesActiveEffect } from "./blades-active-effect.js";
+import { BladesHelpers } from "./blades-helpers.js";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -13,8 +13,8 @@ export class BladesActorSheet extends BladesSheet {
 	  return foundry.utils.mergeObject(super.defaultOptions, {
   	  classes: ["blades-in-the-dark", "sheet", "actor", "pc"],
   	  template: "systems/blades-in-the-dark/templates/actor-sheet.html",
-      width: 700,
-      height: 970,
+      width: 790,
+      height: 890,
       tabs: [{navSelector: ".tabs", contentSelector: ".tab-content", initial: "abilities"}]
     });
   }
@@ -61,7 +61,7 @@ export class BladesActorSheet extends BladesSheet {
         mule_present = 1;
       }
     });
-
+	
     //set encumbrance level
     if (mule_present) {
       sheetData.system.load_level=mule_level[loadout];
@@ -85,6 +85,43 @@ export class BladesActorSheet extends BladesSheet {
     return sheetData;
   }
 
+  /** @override **/
+  async _onDropItem(event, droppedItem) {
+    await super._onDropItem(event, droppedItem);
+    if (!this.actor.isOwner) {
+      ui.notifications.error(`You do not have sufficient permissions to edit this character. Please speak to your GM if you feel you have reached this message in error.`, {permanent: true});
+      return false;
+    }
+	  await this.handleDrop(event, droppedItem);
+  }
+  
+  /** @override **/
+  async _onDropActor(event, droppedActor){
+    await super._onDropActor(event, droppedActor);
+    if (!this.actor.isOwner) {
+      ui.notifications.error(`You do not have sufficient permissions to edit this character. Please speak to your GM if you feel you have reached this message in error.`, {permanent: true});
+      return false;
+    }
+    await this.handleDrop(event, droppedActor);
+  }  
+  
+  /** @override **/
+  async handleDrop(event, droppedEntity){
+    let droppedEntityFull = await fromUuid(droppedEntity.uuid);
+    switch (droppedEntityFull.type) {
+      case "npc":
+        await BladesHelpers.addAcquaintance(this.actor, droppedEntityFull);
+        break;
+      case "item":
+        break;
+      case "ability":
+        break;
+      case "class":
+        break ;
+      default:
+        break;
+    }
+  }
   /* -------------------------------------------- */
 
   /** @override */
@@ -110,8 +147,52 @@ export class BladesActorSheet extends BladesSheet {
 
     // manage active effects
     html.find(".effect-control").click(ev => BladesActiveEffect.onManageActiveEffect(ev, this.actor));
-  }
+	
+	// acquaintance status toggle
+    html.find('.standing-toggle').click(ev => {
+      let acquaintances = this.actor.system.acquaintances;
+      let acqId = ev.target.closest('.acquaintance').dataset.acquaintance;
+      let clickedAcqIdx = acquaintances.findIndex(item => item.id == acqId);
+      let clickedAcq = acquaintances[clickedAcqIdx];
+      let oldStanding = clickedAcq.standing;
+      let newStanding;
+      switch(oldStanding){
+        case "friend":
+          newStanding = "rival";
+          break;
+        case "rival":
+          newStanding = "neutral";
+          break;
+        case "neutral":
+          newStanding = "friend";
+          break;
+      }
+      clickedAcq.standing = newStanding;
+      acquaintances.splice(clickedAcqIdx, 1, clickedAcq);
+      this.actor.update({data: {acquaintances : acquaintances}});
+    });
+	
+	  // Open Acquaintance
+    html.find('.open-friend').click(ev => {
+      const element = $(ev.currentTarget).parents(".item");
+      const actor = game.actors.get(element.data("itemId"));
+      actor?.sheet.render(true);
+    });
+	
+	// Remove Acquaintance from character sheet
+    html.find('.acquaintance-delete').click(ev => {
+      //let acqId = ev.target.closest('.acquaintance').dataset.acquaintance; //used when <div class="acquaintance"
+	  const element = $(ev.currentTarget).parents(".item");
+	  let acqId = element.data("itemId");
+	  BladesHelpers.removeAcquaintance(this.actor, acqId);
+    });
 
-  /* -------------------------------------------- */
+	  // Import Acquaintance by playbook
+    html.find('.import-contacts').click(ev => {
+	  const playbook = this.actor.items.filter(i=> i.type === "class")[0]?.name;
+	  BladesHelpers.import_pb_contacts(this.actor, playbook);
+
+    });
+  }
 
 }

@@ -17,6 +17,12 @@
   &.clocks-8 {
     @include clock(8, 200);
   }
+  &.clocks-10 {
+    @include clock(10, 200);
+  }
+  &.clocks-12 {
+    @include clock(12, 200);
+  }
 }
 
 .blades-clock-name-type {

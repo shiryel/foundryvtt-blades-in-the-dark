@@ -2,20 +2,21 @@
   "id": "blades-in-the-dark",
   "title": "Blades in the Dark",
   "description": "Blades in the dark game system.",
-  "version": "4.8",
+  "version": "5.0.0",
   "compatibility": {
-    "minimum": 10,
-    "verified": "10.284"
+    "minimum": 11,
+    "verified": "11.315"
   },
   "name": "blades-in-the-dark",
-  "minimumCoreVersion": "10",
-  "url": "https://github.com/megastruktur/foundryvtt-blades-in-the-dark/",
-  "manifest": "https://raw.githubusercontent.com/megastruktur/foundryvtt-blades-in-the-dark/master/system.json",
+  "minimumCoreVersion": "11",
+  "url": "https://github.com/Dez384/foundryvtt-blades-in-the-dark/",
+  "manifest": "https://raw.githubusercontent.com/Dez384/foundryvtt-blades-in-the-dark/master/system.json",
   "download": "https://github.com/megastruktur/foundryvtt-blades-in-the-dark/releases/download/4.8/blades-in-the-dark-4.8.zip",
   "authors": [
     { "name": "megastruktur" },
     { "name": "drewg13" },
-    { "name": "justinross" }
+    { "name": "justinross" },
+    { "name": "Dez384" }
   ],
   "esmodules": [
     "module/blades.js"
@@ -38,6 +39,11 @@
       "lang": "es",
       "name": "Spanish",
       "path": "lang/es.json"
+    },
+    {
+      "lang": "fr",
+      "name": "French",
+      "path": "lang/fr.json"
     },
     {
       "lang": "pl",
@@ -75,6 +81,13 @@
       "label": "Vices",
       "system": "blades-in-the-dark",
       "path": "./packs/vices.db",
+      "type": "Item"
+    },
+    {
+      "name": "prison",
+      "label": "Prisons",
+      "system": "blades-in-the-dark",
+      "path": "./packs/prison.db",
       "type": "Item"
     },
     {
@@ -126,6 +139,13 @@
       "path": "./packs/crew_abilities.db",
       "type": "Item"
     },
+    {
+      "name": "hunting_grounds",
+      "label": "Hunting Grounds",
+      "system": "blades-in-the-dark",
+      "path": "./packs/hunting_grounds.db",
+      "type": "Item"
+    },
 	{
       "name": "faction",
       "label": "Factions",
@@ -161,5 +181,27 @@
       "path": "./packs/entanglements-macro.db",
       "type": "Macro"
     }
+  ],
+  "packFolders": [
+    {
+      "name": "Character Options",
+      "sorting": "m",
+      "packs": ["class", "ability", "item", "background", "heritage", "vice"]
+	},
+    {
+      "name": "Crew Options",
+      "sorting": "m",
+      "packs": ["crew_type", "crew_ability", "crew_upgrade", "prison", "crew_reputation", "hunting_grounds"]
+	},
+    {
+      "name": "Factions & NPCs",
+      "sorting": "m",
+      "packs": ["faction", "npc"]
+	},
+    {
+      "name": "Entanglements",
+      "sorting": "m",
+      "packs": ["entanglements-macro", "entanglements", "entanglements-journals"]
+	}
   ]
 }

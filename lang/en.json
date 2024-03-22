@@ -45,6 +45,19 @@
   "BITD.TraumaSoft": "Soft",
   "BITD.TraumaUnstable": "Unstable",
   "BITD.TraumaVicious": "Vicious",
+  "BITD.TraumaClanking": "Clanking",
+  "BITD.TraumaLeaking": "Leaking",
+  "BITD.TraumaFixated": "Fixated",
+  "BITD.TraumaSmoking": "Smoking",
+  "BITD.TraumaSparking": "Sparking",
+  "BITD.TraumaChaotic": "Chaotic",
+  "BITD.TraumaDestructive": "Destructive",
+  "BITD.TraumaFurious": "Furious",
+  "BITD.TraumaObsessive": "Obsessive",
+  "BITD.TraumaTerritorial": "Territorial",
+  "BITD.TraumaSavage": "Savage",
+  "BITD.TraumaRuthless": "Ruthless",
+  "BITD.TraumaSecretive": "Secretive",
   "BITD.Harm": "Harm",
   "BITD.Healing": "Healing",
   "BITD.Armor": "Armor",
@@ -104,6 +117,7 @@
   "BITD.CrewXP": "Crew XP",
   "BITD.CrewExpClue1": "At the end of each session, for each item below, mark 1 xp (or instead mark 2xp if that item occurred multiple times).",
   "BITD.SpecialAbilities": "Special Abilities",
+  "BITD.Claimed": "Claimed",
 
   "BITD.Gang": "Gang",
   "BITD.Expert": "Expert",
@@ -196,6 +210,7 @@
 
   "BITD.AddAbility": "Add Ability",
   "BITD.AddItem": "Add Item",
+  "BITD.ImportPlaybookContacts": "Import Playbook Contacts",
   "BITD.Uses": "No. of Uses",
   "BITD.NumberAvailable": "Number Available",
   "BITD.AdditionalInfo": "Additional Information",
@@ -221,6 +236,7 @@
 
   "BITD.Name": "Name",
   "BITD.CampaignName": "Campaign Name",
+  "BITD.CrewName": "Crew Name",
 
   "BITD.DangerousFriends": "Dangerous Friends",
   "BITD.EnemiesRivals": "Enemies and Rivals",
@@ -233,6 +249,13 @@
   "BITD.DarkServants": "Dark Servants",
   "BITD.StrangeFriends": "Strange Friends",
   "BITD.Acquaintances": "Acquaintances",
+  "BITD.Contacts": "Contacts",
+ 
+  "BITD.HuntingGrounds": "Hunting Grounds",
+  "BITD.SacredSites": "Sacred Sites",
+  "BITD.SalesTerritory": "Sales Territory",
+  "BITD.CargoTypes": "Cargo Types",
+  "BITD.Prison": "Prison",
 
   "BITD.IndulgeVice": "Indulge Vice",
   "BITD.GatherInformation": "Gather Information",

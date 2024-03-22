@@ -58,7 +58,7 @@ export class BladesActiveEffect extends ActiveEffect {
     switch ( a.dataset.action ) {
       case "create":
         return owner.createEmbeddedDocuments("ActiveEffect", [{
-          label: "New Effect",
+          name: "New Effect",
           icon: "systems/blades-in-the-dark/styles/assets/icons/Icon.3_13.png",
           origin: owner.uuid,
           "duration.rounds": selector.dataset.effectType === "temporary" ? 1 : undefined,
@@ -86,22 +86,22 @@ export class BladesActiveEffect extends ActiveEffect {
     const categories = {
       temporary: {
         type: "temporary",
-        label: "Temporary Effects",
+        name: "Temporary Effects",
         effects: []
       },
       passive: {
         type: "passive",
-        label: "Passive Effects",
+        name: "Passive Effects",
         effects: []
       },
       inactive: {
         type: "inactive",
-        label: "Inactive Effects",
+        name: "Inactive Effects",
         effects: []
       },
       suppressed: {
         type: "suppressed",
-        label: "Suppressed Effects",
+        name: "Suppressed Effects",
         effects: []
       }
 
@@ -109,8 +109,9 @@ export class BladesActiveEffect extends ActiveEffect {
 
     // Iterate over active effects, classifying them into categories
     for ( let e of effects ) {
-      e._getSourceName(); // Trigger a lookup for the source name
-      if ( e.isSuppressed ) categories.suppressed.effects.push(e);
+      //e._getSourceName(); // Trigger a lookup for the source name
+      e.origin;  //fixes deprecation of _getSourceName?
+	  if ( e.isSuppressed ) categories.suppressed.effects.push(e);
       else if ( e.disabled ) categories.inactive.effects.push(e);
       else if ( e.isTemporary ) categories.temporary.effects.push(e);
       else categories.passive.effects.push(e);

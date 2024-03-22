@@ -32,8 +32,10 @@ Hooks.once("init", async function() {
     dice: bladesRoll
   };
   game.system.bladesClocks = {
-    sizes: [ 4, 6, 8 ]
+    sizes: [ 4, 6, 8, 10, 12 ]
   };
+
+  game.system.traumas = [ "cold", "haunted", "obsessed", "paranoid", "reckless", "soft", "unstable", "vicious" ];
 
   CONFIG.Item.documentClass = BladesItem;
   CONFIG.Actor.documentClass = BladesActor;
@@ -241,13 +243,16 @@ Hooks.once("init", async function() {
   /**
    * Create appropriate Blades clock
    */
-
-  Handlebars.registerHelper('blades-clock', function(parameter_name, type, current_value, uniq_id) {
+  // Clocks in color for Clock Actors
+  Handlebars.registerHelper('blades-clock-color', function(parameter_name, type, color, current_value, uniq_id) {
 
     let html = '';
 
     if (current_value === null || current_value === 'null') {
       current_value = 0;
+    }
+	if (color === undefined) {
+      color = "black";
     }
 
     if (parseInt(current_value) > parseInt(type)) {
@@ -256,7 +261,7 @@ Hooks.once("init", async function() {
 
     // Label for 0
     html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
-    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('systems/blades-in-the-dark/styles/assets/progressclocks-svg/Progress Clock ${type}-${current_value}.svg');">`;
+    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('systems/blades-in-the-dark/themes/${color}/${type}clock_${current_value}.svg');">`;
 
     let zero_checked = (parseInt(current_value) === 0) ? 'checked' : '';
     html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
@@ -272,7 +277,41 @@ Hooks.once("init", async function() {
     html += `</div>`;
     return html;
   });
+  // Clocks in black for clocks embedded in sheets
+  Handlebars.registerHelper('blades-clock', function(parameter_name, type, current_value, uniq_id) {
 
+    let html = '';
+
+    if (current_value === null || current_value === 'null') {
+      current_value = 0;
+    }
+
+    if (parseInt(current_value) > parseInt(type)) {
+      current_value = type;
+    }
+
+    // Label for 0
+    html += `<label class="clock-zero-label" for="clock-0-${uniq_id}}"><i class="fab fa-creative-commons-zero nullifier"></i></label>`;
+    html += `<div id="blades-clock-${uniq_id}" class="blades-clock clock-${type} clock-${type}-${current_value}" style="background-image:url('systems/blades-in-the-dark/themes/black/${type}clock_${current_value}.svg');">`;
+
+    let zero_checked = (parseInt(current_value) === 0) ? 'checked' : '';
+    html += `<input type="radio" value="0" id="clock-0-${uniq_id}}" data-dType="String" name="${parameter_name}" ${zero_checked}>`;
+
+    for (let i = 1; i <= parseInt(type); i++) {
+      let checked = (parseInt(current_value) === i) ? 'checked' : '';
+      html += `
+        <input type="radio" value="${i}" id="clock-${i}-${uniq_id}" data-dType="String" name="${parameter_name}" ${checked}>
+        <label for="clock-${i}-${uniq_id}"></label>
+      `;
+    }
+
+    html += `</div>`;
+    return html;
+  });
+  
+  Handlebars.registerHelper('pc', function( string ) {
+    return BladesHelpers.getProperCase( string );
+  });
 });
 
 /**

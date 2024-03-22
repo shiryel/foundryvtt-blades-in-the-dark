@@ -92,7 +92,6 @@ export class BladesSheet extends ActorSheet {
 
     let items = await BladesHelpers.getAllItemsByType(item_type, game);
     let items_to_add = [];
-
     el.find("input:checked").each(function() {
       items_to_add.push(items.find(e => e._id === $(this).val()));
     });
