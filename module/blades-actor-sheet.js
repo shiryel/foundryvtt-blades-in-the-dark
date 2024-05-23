@@ -61,7 +61,7 @@ export class BladesActorSheet extends BladesSheet {
         mule_present = 1;
       }
     });
-	
+
     //set encumbrance level
     if (mule_present) {
       sheetData.system.load_level=mule_level[loadout];
@@ -94,7 +94,7 @@ export class BladesActorSheet extends BladesSheet {
     }
 	  await this.handleDrop(event, droppedItem);
   }
-  
+
   /** @override **/
   async _onDropActor(event, droppedActor){
     await super._onDropActor(event, droppedActor);
@@ -103,8 +103,8 @@ export class BladesActorSheet extends BladesSheet {
       return false;
     }
     await this.handleDrop(event, droppedActor);
-  }  
-  
+  }
+
   /** @override **/
   async handleDrop(event, droppedEntity){
     let droppedEntityFull = await fromUuid(droppedEntity.uuid);
@@ -147,7 +147,7 @@ export class BladesActorSheet extends BladesSheet {
 
     // manage active effects
     html.find(".effect-control").click(ev => BladesActiveEffect.onManageActiveEffect(ev, this.actor));
-	
+
 	// acquaintance status toggle
     html.find('.standing-toggle').click(ev => {
       let acquaintances = this.actor.system.acquaintances;
@@ -169,16 +169,16 @@ export class BladesActorSheet extends BladesSheet {
       }
       clickedAcq.standing = newStanding;
       acquaintances.splice(clickedAcqIdx, 1, clickedAcq);
-      this.actor.update({data: {acquaintances : acquaintances}});
+      this.actor.update({system: {acquaintances : acquaintances}});
     });
-	
+
 	  // Open Acquaintance
     html.find('.open-friend').click(ev => {
       const element = $(ev.currentTarget).parents(".item");
       const actor = game.actors.get(element.data("itemId"));
       actor?.sheet.render(true);
     });
-	
+
 	// Remove Acquaintance from character sheet
     html.find('.acquaintance-delete').click(ev => {
       //let acqId = ev.target.closest('.acquaintance').dataset.acquaintance; //used when <div class="acquaintance"

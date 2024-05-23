@@ -91,7 +91,7 @@ export class BladesHelpers {
    */
   static getAttributeLabel(attribute_name) {
         let attribute_labels = {};
-        const attributes = game.system.model.Actor.character.attributes;
+        const attributes = game.model.Actor.character.attributes;
 
         for (const att_name in attributes) {
           attribute_labels[att_name] = attributes[att_name].label;
@@ -112,7 +112,7 @@ export class BladesHelpers {
    */
   static getRollLabel(roll_name) {
     let attribute_labels = {};
-    const attributes = game.system.model.Actor.character.attributes;
+    const attributes = game.model.Actor.character.attributes;
 
     for (const att_name in attributes) {
       if (att_name == roll_name) {
@@ -135,7 +135,7 @@ export class BladesHelpers {
    * @returns {Boolean}
    */
   static isAttributeAction(attribute_name) {
-    const attributes = game.system.model.Actor.character.attributes;
+    const attributes = game.model.Actor.character.attributes;
 
     for (const att_name in attributes) {
       for (const skill_name in attributes[att_name].skills) {
@@ -155,7 +155,7 @@ export class BladesHelpers {
    * @returns {Boolean}
    */
   static isAttributeAttribute(attribute_name) {
-    const attributes = game.system.model.Actor.character.attributes;
+    const attributes = game.model.Actor.character.attributes;
 
     return (attribute_name in attributes);
   }
@@ -207,7 +207,7 @@ export class BladesHelpers {
        return oldAcq.id == acq.id;
      });
      if(unique_id){
-       await actor.update({data: {acquaintances : current_acquaintances.concat([acquaintance])}});
+       await actor.update({system: {acquaintances : current_acquaintances.concat([acquaintance])}});
      }
      else{
        ui.notifications.info("The dropped NPC is already an acquaintance of this character.");
@@ -216,15 +216,15 @@ export class BladesHelpers {
    static async removeAcquaintance(actor, acqId){
     let current_acquaintances = actor.system.acquaintances;
     let updated_acquaintances = current_acquaintances.filter(acq => acq._id !== acqId && acq.id !== acqId);
-	await actor.update({data: {acquaintances : updated_acquaintances}});
+	await actor.update({system: {acquaintances : updated_acquaintances}});
   }
- 
+
   static async getAllItemsByType(item_type) {
 
     let list_of_items = [];
     let world_items = [];
     let compendium_items = [];
-    
+
     if(item_type === "npc"){
       world_items = game.actors.filter(e => e.type === item_type).map(e => {return e});
     }
@@ -255,7 +255,7 @@ export class BladesHelpers {
     let item = game_items.find(item => item.id === item_id);
     return item;
   }
-  
+
   static async getPlaybookAcquaintances(actor_type, selected_playbook){
     let all_acquaintances = await this.getSourcedItemsByType('npc');
 	let playbook_acquaintances = [];
@@ -267,7 +267,7 @@ export class BladesHelpers {
 	return playbook_acquaintances;
 
   }
-  
+
   	static async import_pb_contacts(actor, playbook){
 	  const pb_type = await actor.type;
 	  const pb_actor = await this.getPlaybookAcquaintances(pb_type, playbook);
@@ -278,5 +278,5 @@ export class BladesHelpers {
 	  await this.addAcquaintance(actor, new_acq);
 	  i++;}
 	}
-  
+
 }
