@@ -125,11 +125,10 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let messageData = {
     speaker: speaker,
     content: result,
-    type: CONST.CHAT_MESSAGE_TYPES.ROLL,
     roll: r
   }
 
-  CONFIG.ChatMessage.documentClass.create(messageData, {})
+  ChatMessage.create(messageData);
 }
 
 /**
