@@ -39,7 +39,7 @@ export class BladesClockSheet extends BladesSheet {
     formData['prototypeToken.texture.src'] = image_path;
     let data = [];
     let update = {
-      img: image_path
+      "texture.src": image_path
     };
 
     let tokens = this.actor.getActiveTokens();

@@ -16,7 +16,7 @@ export async function bladesRoll(dice_amount, attribute_name = "", position = "r
   let r = new Roll( `${dice_amount}d6`, {} );
 
   // show 3d Dice so Nice if enabled
-  r.evaluate({async:true});
+  await r.evaluate();
   await showChatRollMessage(r, zeromode, attribute_name, position, effect, note, current_stress, current_crew_tier);
 }
 
@@ -125,11 +125,10 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let messageData = {
     speaker: speaker,
     content: result,
-    type: CONST.CHAT_MESSAGE_TYPES.ROLL,
     roll: r
   }
 
-  CONFIG.ChatMessage.documentClass.create(messageData, {})
+  ChatMessage.create(messageData);
 }
 
 /**
