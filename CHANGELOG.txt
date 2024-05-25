@@ -1,3 +1,6 @@
+v.5.1.0
+- Fixes for v12 Foundy
+
 v.5.0.0
 - Added options for clock actors to go to 10 and 12 parts and have color. Edited the layout of the clock sheet html.
 - Added acquintances to character sheet and to crew sheet with the option to import the default acquaintances by playbook

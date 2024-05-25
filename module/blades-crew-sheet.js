@@ -162,7 +162,7 @@ export class BladesCrewSheet extends BladesSheet {
       }
       clickedAcq.standing = newStanding;
       acquaintances.splice(clickedAcqIdx, 1, clickedAcq);
-      this.actor.update({data: {acquaintances : acquaintances}});
+      this.actor.update({system: {acquaintances : acquaintances}});
     });
 	
 	  // Open Acquaintance
