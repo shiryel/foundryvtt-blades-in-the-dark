@@ -1,5 +1,9 @@
+v.5.1.1
+- Dice-So-Nice intregration fix #3 (@justinross)
+
 v.5.1.0
-- Fixes for v12 Foundy
+- Fixes for v12 Foundry #1 (@drewg13, @justinross)
+- Additional v12 fixes
 
 v.5.0.0
 - Added options for clock actors to go to 10 and 12 parts and have color. Edited the layout of the clock sheet html.

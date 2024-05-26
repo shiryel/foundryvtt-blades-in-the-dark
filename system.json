@@ -2,7 +2,7 @@
   "id": "blades-in-the-dark",
   "title": "Blades in the Dark",
   "description": "Blades in the dark game system.",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "compatibility": {
     "minimum": 11,
     "verified": "12.324"
