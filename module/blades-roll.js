@@ -125,7 +125,7 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let messageData = {
     speaker: speaker,
     content: result,
-    roll: r
+    rolls: [r],
   }
 
   ChatMessage.create(messageData);
