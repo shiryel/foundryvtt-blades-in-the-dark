@@ -265,7 +265,7 @@ export async function simpleRollPopup() {
     title: `Simple Roll`,
     content: `
       <h2>${game.i18n.localize("BITD.RollSomeDice")}</h2>
-      <p>${game.i18n.localize("BITD.RollTokenDescription")}</p>
+      <!-- <p>${game.i18n.localize("BITD.RollTokenDescription")}</p> -->
       <form>
         <div class="form-group">
           <label>${game.i18n.localize("BITD.RollNumberOfDice")}:</label>
