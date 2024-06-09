@@ -8,7 +8,7 @@
 </p>
 
 If you like our work - use the system, use it all, and may the shadows cover your way.
-
+If you have questions, please ask them on the #forged-in-the-dark channel of the [FoundryVTT Discord](https://discord.gg/foundryvtt)
 
 ## Usage
 `"Item" - all classes, crew types, upgrades, items, abilities, upgrades, etc.`
