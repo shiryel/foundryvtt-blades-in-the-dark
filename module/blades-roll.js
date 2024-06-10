@@ -122,10 +122,20 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
     result = await renderTemplate("systems/blades-in-the-dark/templates/chat/fortune-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: "BITD.Fortune", note: note});
   }
 
-  let messageData = {
-    speaker: speaker,
-    content: result,
-    rolls: [r],
+  let messageData;
+  if (game.version >= 12) {
+	  messageData = {
+		speaker: speaker,
+		content: result,
+		rolls: [r]
+	}
+  } else {
+	  messageData = {
+		speaker: speaker,
+		content: result,
+		type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+		rolls: [r]
+	}
   }
 
   ChatMessage.create(messageData);
