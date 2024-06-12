@@ -183,7 +183,6 @@
   "BITD.RollSuccess": "Успех",
   "BITD.RollPartialSuccess": "Частичный Успех",
   "BITD.RollSomeDice": "Roll Some Dice!",
-  "BITD.RollTokenDescription": "Если вы хотите получить данные с персонажа, то сперва выберите его Токен.",
   "BITD.RollNumberOfDice": "Количество Кубов",
   "BITD.RollDoWithIncreasedEffect": "Все получилось. <strong>Эффективность действия повышается</strong>.",
   "BITD.RollDo": "Все получилось.",

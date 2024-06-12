@@ -184,7 +184,6 @@
   "BITD.RollSuccess": "Sukces",
   "BITD.RollPartialSuccess": "Częściowy Sukces",
   "BITD.RollSomeDice": "Rzuć Koścmi!",
-  "BITD.RollTokenDescription": "JEżeli chcesz przeciągnąć liczby z postaci, zaznacz najpierw ich Tokeny.",
   "BITD.RollNumberOfDice": "Liczba Kości",
   "BITD.RollDoWithIncreasedEffect": "Udaje ci się ze <strong>zwiększonym efektem</strong>.",
   "BITD.RollDo": "Udało się.",

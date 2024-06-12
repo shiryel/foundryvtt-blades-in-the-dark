@@ -181,7 +181,6 @@
 	"BITD.RollSuccess": "Successo",
 	"BITD.RollPartialSuccess": "Success Parcial",
 	"BITD.RollSomeDice": "Role alguns dados!",
-	"BITD.RollTokenDescription": "Se quiser usar os números de um personagem, selecione o Token dele primeiro.",
 	"BITD.RollNumberOfDice": "Quantidade de dados",
 	"BITD.RollDoWithIncreasedEffect": "Você faz sua ação com <strong>efeito ampliado</strong>.",
 	"BITD.RollDo": "Você realiza a ação.",

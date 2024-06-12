@@ -186,7 +186,6 @@
   "BITD.RollSuccess": "Éxito",
   "BITD.RollPartialSuccess": "Éxito parcial",
   "BITD.RollSomeDice": "¡Tira unos dados!",
-  "BITD.RollTokenDescription": "If you want to pull the numbers from a character, select their Token first.",
   "BITD.RollNumberOfDice": "Número de Dados",
   "BITD.RollDoWithIncreasedEffect": "Lo logras con un <strong>efecto aumentado</strong>.",
   "BITD.RollDo": "Lo logras.",
