@@ -105,6 +105,13 @@
   cursor: pointer;
   color: red;
 }
+.dice-tooltip .dice-rolls .roll.method {
+  font-size: var(--font-size-10);
+  background: transparent;
+  min-width: auto;
+  line-height: 10px;
+  vertical-align: super;
+}
 .blades-in-the-dark section {
   display: flex;
   flex-direction: column;

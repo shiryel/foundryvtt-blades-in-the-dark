@@ -39,6 +39,15 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
   let roll_status = getBladesRollStatus(rolls, zeromode);
 
   let result;
+  
+  // Check and log if Dice Configuration is Manual
+  let method = {};
+  method.type = (r.terms)[0].method;
+  if( method.type ) {
+    method.icon = CONFIG.Dice.fulfillment.methods[method.type].icon;
+    method.label = CONFIG.Dice.fulfillment.methods[method.type].label;
+  }
+
   if (BladesHelpers.isAttributeAction(attribute_name)) {
     let position_localize = '';
     switch (position) {
@@ -66,13 +75,13 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
         effect_localize = 'BITD.EffectStandard'
     }
 
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/action-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/action-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, note: note});
   }
   // Check for Resistance roll
   else if (BladesHelpers.isAttributeAttribute(attribute_name)) {
     let stress = getBladesRollStress(rolls, zeromode);
 
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/resistance-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, stress: stress, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/resistance-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, stress: stress, note: note});
   }
   // Check for Indugle Vice roll
   else if (attribute_name == 'BITD.Vice') {
@@ -85,15 +94,15 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
       clear_stress = current_stress;
     }
 
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/vice-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, clear_stress: clear_stress, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/vice-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, clear_stress: clear_stress, note: note});
   }
   // Check for Gather Information roll
   else if (attribute_name == 'BITD.GatherInformation') {
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/gather-info-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/gather-info-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, note: note});
   }
   // Check for Engagement roll
   else if (attribute_name == 'BITD.Engagement') {
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/engagement-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/engagement-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, note: note});
   }
   // Check for Asset roll
   else if (attribute_name == 'BITD.AcquireAsset') {
@@ -115,11 +124,11 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
         break;
     }
 
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/asset-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: attribute_label, tier_quality: tier_quality, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/asset-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, tier_quality: tier_quality, note: note});
   }
   // Fortune roll if not specified
   else {
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/fortune-roll.html", {rolls: rolls, roll_status: roll_status, attribute_label: "BITD.Fortune", note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/fortune-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: "BITD.Fortune", note: note});
   }
 
   let messageData;

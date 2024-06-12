@@ -22,5 +22,10 @@
     <li class="roll die d6">{{{this.roll}}}</li>
     {{/if}}
     {{/each}}
+	{{#if @root.method}}
+      {{#unless (eq @root.method.type "mersenne")}}
+        <li class="roll method" data-tooltip="{{localize @root.method.label}}">{{{ @root.method.icon }}}</li>
+      {{/unless}}
+    {{/if}}
   </ol>
 </div>
