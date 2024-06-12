@@ -337,7 +337,7 @@ Hooks.once("ready", function() {
 
 // getSceneControlButtons
 Hooks.on("renderSceneControls", async (app, html) => {
-  let dice_roller = $('<li class="scene-control" title="Dice Roll"><i class="fas fa-dice"></i></li>');
+  let dice_roller = $('<li class="scene-control" data-tooltip="Dice Roll"><i class="fas fa-dice"></i></li>');
   dice_roller.click( async function() {
     await simpleRollPopup();
   });

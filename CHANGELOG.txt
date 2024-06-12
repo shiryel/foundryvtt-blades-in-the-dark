@@ -1,3 +1,10 @@
+v.5.1.2
+- Fixed Dice-So-Nice Integration for Foundry v11
+- Removed false text from Dice Roller (#4, #6 @Dez384, @linxcat)
+- Updated tooltips to Foundry standard
+- Added color to dice in chat messages and added indicator of roll method for manual rolling
+- Added Github Actions and updated the README
+
 v.5.1.1
 - Dice-So-Nice intregration fix #3 (@justinross)
 

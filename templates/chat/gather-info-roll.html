@@ -22,10 +22,15 @@
   <ol class="dice-rolls">
     {{#each this.rolls}}
     {{#if this.result}}
-    <li class="roll die d6">{{{this.result}}}</li>
+    <li class="roll die d6 {{../this.color}}"{{#if (eq this.result 6)}}style="color: green;"{{else if (eq this.result 3)}}style="color: red;"{{else if (eq this.result 2)}}style="color: red;"{{else if (eq this.result 1)}}style="color: red;"{{/if}}>{{{this.result}}}</li>
     {{else}}
     <li class="roll die d6">{{{this.roll}}}</li>
     {{/if}}
     {{/each}}
+	{{#if @root.method}}
+      {{#unless (eq @root.method.type "mersenne")}}
+        <li class="roll method" data-tooltip="{{localize @root.method.label}}">{{{ @root.method.icon }}}</li>
+      {{/unless}}
+    {{/if}}
   </ol>
 </div>

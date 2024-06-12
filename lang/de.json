@@ -186,7 +186,6 @@
   "BITD.RollSuccess": "Erfolg",
   "BITD.RollPartialSuccess": "Teilerfolg",
   "BITD.RollSomeDice": "Würfle!",
-  "BITD.RollTokenDescription": "Wenn du die Werte eines Charakters nutzen möchtest, wähle zuerst seinen Token aus.",
   "BITD.RollNumberOfDice": "Anzahl der Würfel",
   "BITD.RollDoWithIncreasedEffect": "Du schaffst es mit einem <strong>verstärkten Effekt</strong>.",
   "BITD.RollDo": "Du schaffst es.",
