@@ -2,14 +2,14 @@
   "id": "blades-in-the-dark",
   "title": "Blades in the Dark",
   "description": "Blades in the dark game system.",
-  "version": "5.1.1",
+  "version": "5.1.2",
   "compatibility": {
     "minimum": 11,
-    "verified": "12.324"
+    "verified": "12.327"
   },
   "url": "https://github.com/Dez384/foundryvtt-blades-in-the-dark/",
   "manifest": "https://raw.githubusercontent.com/Dez384/foundryvtt-blades-in-the-dark/master/system.json",
-  "download": "https://github.com/Dez384/foundryvtt-blades-in-the-dark/archive/refs/tags/v.5.1.1.zip",
+  "download": "https://github.com/Dez384/foundryvtt-blades-in-the-dark/archive/refs/tags/v5.1.2.zip",
   "authors": [
     { "name": "megastruktur" },
     { "name": "drewg13" },
