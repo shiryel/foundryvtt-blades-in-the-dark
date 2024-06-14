@@ -32,13 +32,12 @@ export class BladesCrewSheet extends BladesSheet {
     sheetData.effects = BladesActiveEffect.prepareActiveEffectCategories(this.actor.effects);
 
     // Calculate Turfs amount.
-    // We already have Lair, so set to -1.
-    let turfs_amount = 0
+    let turfs_amount = 0;
+	let turfs_max = 6; //pg45 of BitD rulebook
 
     sheetData.items.forEach(item => {
 
       if (item.type === "crew_type") {
-        // Object.entries(item.data.turfs).forEach(turf => {turfs_amount += (turf.value === true) ? 1 : 0});
         Object.entries(item.system.turfs).forEach(([key, turf]) => {
           if (turf.name === 'BITD.Turf') {
             turfs_amount += (turf.value === true) ? 1 : 0;
@@ -47,6 +46,9 @@ export class BladesCrewSheet extends BladesSheet {
       }
 
     });
+	
+	turfs_amount = turfs_amount + sheetData.system.add_turf;
+	if (turfs_amount > turfs_max) {turfs_amount = turfs_max;};
     sheetData.system.turfs_amount = turfs_amount;
 
     return sheetData;

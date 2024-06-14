@@ -168,7 +168,8 @@
     "acquaintances": [],
     "acquaintances_label": "BITD.Contacts",
     "hunting_grounds": [],
-    "hunting_grounds_label": "BITD.HuntingGrounds"
+    "hunting_grounds_label": "BITD.HuntingGrounds",
+    "add_turf": 0
   },
   "\uD83D\uDD5B clock": {
     "name": "",
