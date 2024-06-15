@@ -33,7 +33,7 @@ export class BladesCrewSheet extends BladesSheet {
 
     // Calculate Turfs amount.
     let turfs_amount = 0;
-	let turfs_max = 6; //pg45 of BitD rulebook
+	let turfs_max = sheetData.system.turf.max;
 
     sheetData.items.forEach(item => {
 
@@ -47,7 +47,7 @@ export class BladesCrewSheet extends BladesSheet {
 
     });
 	
-	turfs_amount = turfs_amount + sheetData.system.add_turf;
+	turfs_amount = turfs_amount + sheetData.system.turf.bonus;
 	if (turfs_amount > turfs_max) {turfs_amount = turfs_max;};
     sheetData.system.turfs_amount = turfs_amount;
 

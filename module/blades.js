@@ -124,11 +124,6 @@ Hooks.once("init", async function() {
     let html = options.fn(this);
     var turfs_amount_int = parseInt(turfs_amount);
 
-    // Can't be more than 6.
-    if (turfs_amount_int > 6) {
-      turfs_amount_int = 6;
-    }
-
     for (let i = 13 - turfs_amount_int; i <= 12; i++) {
       const rgx = new RegExp(' value=\"' + i + '\"');
       html = html.replace(rgx, "$& disabled");

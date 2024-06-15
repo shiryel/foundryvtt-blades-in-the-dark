@@ -161,15 +161,18 @@
       "value": [0],
       "max": 0
     },
-    "turfs": [8],
+    "turf": {
+      "descriptions": [],
+      "max": 6,
+      "bonus": 0
+    },
     "features": [],
     "heat": [0],
     "wanted": [0],
     "acquaintances": [],
     "acquaintances_label": "BITD.Contacts",
     "hunting_grounds": [],
-    "hunting_grounds_label": "BITD.HuntingGrounds",
-    "add_turf": 0
+    "hunting_grounds_label": "BITD.HuntingGrounds"
   },
   "\uD83D\uDD5B clock": {
     "name": "",
