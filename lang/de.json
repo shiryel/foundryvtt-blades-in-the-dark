@@ -55,6 +55,7 @@
   "BITD.Adversaries": "Störend",
   "BITD.Enemies": "Feinde",
   "BITD.AtWar": "Krieg",
+  "BITD.Defeated": "Defeated",
   "BITD.Trauma": "Trauma",
   "BITD.TraumaCold": "Kalt",
   "BITD.TraumaHaunted": "Heimgesucht",
@@ -306,6 +307,10 @@
   "BITD.RollAcquireAssetCritical": "Exceptional result.",
   "BITD.RollAcquireAssetSuccess": "Good result.",
   "BITD.RollAcquireAssetPartialSuccess": "Mixed result.",
-  "BITD.RollAcquireAssetFailure": "Bad result."
+  "BITD.RollAcquireAssetFailure": "Bad result.",
+
+  "BITD.Short": "Short",
+  "BITD.Full": "Full",
+  "BITD.Associated": "Associated"
 
 }

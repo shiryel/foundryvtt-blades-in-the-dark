@@ -55,6 +55,7 @@
 	"BITD.Adversaries": "Adversários",
 	"BITD.Enemies": "Inimigos",
 	"BITD.AtWar": "Em Guerra!",
+	"BITD.Defeated": "Defeated",
 	"BITD.Trauma": "Trauma",
 	"BITD.TraumaCold": "Frio",
 	"BITD.TraumaHaunted": "Assombrado",
@@ -285,5 +286,9 @@
 	"BITD.RollAcquireAssetCritical": "Exceptional result.",
 	"BITD.RollAcquireAssetSuccess": "Good result.",
 	"BITD.RollAcquireAssetPartialSuccess": "Mixed result.",
-	"BITD.RollAcquireAssetFailure": "Bad result."
+	"BITD.RollAcquireAssetFailure": "Bad result.",
+
+    "BITD.Short": "Short",
+    "BITD.Full": "Full",
+    "BITD.Associated": "Associated"
 }

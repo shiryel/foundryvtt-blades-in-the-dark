@@ -55,6 +55,7 @@
   "BITD.Adversaries": "Adversaires",
   "BITD.Enemies": "Ennemis",
   "BITD.AtWar": "En Guerre !",
+  "BITD.Defeated": "Defeated",
   "BITD.Trauma": "Trauma",
   "BITD.TraumaCold": "Insensible",
   "BITD.TraumaHaunted": "Hanté",
@@ -294,6 +295,10 @@
   "BITD.RollAcquireAssetCritical": "Résultat exceptionnel.",
   "BITD.RollAcquireAssetSuccess": "Bon résultat.",
   "BITD.RollAcquireAssetPartialSuccess": "Résultat mitigé.",
-  "BITD.RollAcquireAssetFailure": "Mauvais résultat."
+  "BITD.RollAcquireAssetFailure": "Mauvais résultat.",
+
+  "BITD.Short": "Short",
+  "BITD.Full": "Full",
+  "BITD.Associated": "Associated"
 
 }

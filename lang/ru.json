@@ -55,6 +55,7 @@
   "BITD.Adversaries": "Adversaries",
   "BITD.Enemies": "Enemies",
   "BITD.AtWar": "At War!",
+  "BITD.Defeated": "Defeated",
   "BITD.Trauma": "Травма",
   "BITD.TraumaCold": "Социопат",
   "BITD.TraumaHaunted": "Визионер",
@@ -299,5 +300,9 @@
   "BITD.RollAcquireAssetCritical": "Exceptional result.",
   "BITD.RollAcquireAssetSuccess": "Good result.",
   "BITD.RollAcquireAssetPartialSuccess": "Mixed result.",
-  "BITD.RollAcquireAssetFailure": "Bad result."
+  "BITD.RollAcquireAssetFailure": "Bad result.",
+
+  "BITD.Short": "Short",
+  "BITD.Full": "Full",
+  "BITD.Associated": "Associated"
 }

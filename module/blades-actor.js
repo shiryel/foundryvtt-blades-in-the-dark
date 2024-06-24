@@ -17,6 +17,8 @@ export class BladesActor extends Actor {
       case 'character':
       case 'crew':
       case '\uD83D\uDD5B clock':
+	  case 'npc':
+	  case 'factions':
         data.prototypeToken.actorLink = true;
         break;
     }
