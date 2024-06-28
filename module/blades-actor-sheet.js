@@ -112,6 +112,9 @@ export class BladesActorSheet extends BladesSheet {
       case "npc":
         await BladesHelpers.addAcquaintance(this.actor, droppedEntityFull);
         break;
+	  case "crew":
+        await BladesHelpers.addCrew(this.actor, droppedEntityFull);
+        break;
       case "item":
         break;
       case "ability":
@@ -193,6 +196,15 @@ export class BladesActorSheet extends BladesSheet {
 	  BladesHelpers.import_pb_contacts(this.actor, playbook);
 
     });
+	
+		// Remove Crew from character sheet
+    html.find('.crew-delete').click(ev => {
+	  const element = $(ev.currentTarget).parents(".item");
+	  let crewId = element.data("itemId");
+	  BladesHelpers.removeCrew(this.actor, crewId);
+    });
+
+	
   }
 
 }

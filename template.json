@@ -10,6 +10,7 @@
     "vice": "",
     "vice-purveyor": "",
     "playbook": "",
+    "crew": [],
     "acquaintances": [],
     "acquaintances_label": "BITD.Acquaintances",
     "stress": {
@@ -172,7 +173,12 @@
     "acquaintances": [],
     "acquaintances_label": "BITD.Contacts",
     "hunting_grounds": [],
-    "hunting_grounds_label": "BITD.HuntingGrounds"
+    "hunting_grounds_label": "BITD.HuntingGrounds",
+    "scoundrel": {
+      "add_trauma": 0,
+      "add_stress": 0,
+      "mastery": false
+    }
   },
   "\uD83D\uDD5B clock": {
     "name": "",

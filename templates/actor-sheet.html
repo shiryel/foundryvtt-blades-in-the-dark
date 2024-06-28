@@ -77,6 +77,25 @@
                 {{/if}}
             {{/each}}
           </div>
+		
+		<div class="item-block flex-horizontal">
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="crew">{{localize "BITD.CrewName"}}</a></div> 
+          {{#each system.crew as |item id|}}
+            {{#unless (eq item.name undefined)}}
+              <div class="item flex-horizontal" data-item-id="{{item.id}}" data-item-type="{{item.type}}">
+                <div class="open-friend flex-horizontal" style="margin-right: 10px">
+                  <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" style="margin-right: 10px"/>
+                  <div>
+                    <a class="open-friend">{{item.name}}</a>
+                  </div>
+                </div>
+                <a class="crew-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+				<a style="visibility:hidden" class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
+              </div>
+            {{/unless}}
+          {{/each}}
+
+          </div>
 
       </div>
     </div>

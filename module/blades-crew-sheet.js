@@ -50,8 +50,10 @@ export class BladesCrewSheet extends BladesSheet {
 	turfs_amount = turfs_amount + sheetData.system.turf.bonus;
 	if (turfs_amount > turfs_max) {turfs_amount = turfs_max;};
     sheetData.system.turfs_amount = turfs_amount;
-
+	
+	//return data
     return sheetData;
+	
   }
   
   /** @override **/
@@ -73,6 +75,8 @@ export class BladesCrewSheet extends BladesSheet {
         break;
       case "item":
         break;
+      case "crew_type":
+        break;
       case "ability":
         break;
       case "class":
@@ -92,6 +96,7 @@ export class BladesCrewSheet extends BladesSheet {
 
     // Add Crew Type
     html.find(".crew-class").click(this._onItemAddClick.bind(this));
+
 
     // Update Inventory Item
     html.find('.item-sheet-open').click(ev => {
