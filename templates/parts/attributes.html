@@ -5,7 +5,8 @@
   <div id="character-{{../_id}}-attributes-{{attribute_name}}" class="attribute">
     <div id="character-{{../_id}}-attributes-{{attribute_name}}-title" class="attributes-exp">
       <div class="stripe">
-        <a class="attribute-label roll-die-attribute rollable-text" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}</a>
+        <!-- <a class="attribute-label roll-die-attribute rollable-text" data-roll-attribute="{{attribute_name}}">{{localize (concat attribute.label 'Short')}}</a> -->
+		<a class="attribute-label roll-die-attribute rollable-text" data-roll-attribute="{{attribute_name}}">{{localize attribute.label}}</a>
       </div>
       <div class="stripe-tooth-body">
         {{#multiboxes attribute.exp}}
@@ -15,11 +16,11 @@
                 class="fab fa-creative-commons-zero nullifier"></i></label>
         <input type="radio" id="{{../_id}}-{{attribute_name}}-exp-0"
                name="system.attributes.{{attribute_name}}.exp" value="0" checked="checked">
-        {{#times_from_1 attribute.exp_max}}
+        {{#times_from 1 attribute.exp_max}}
           <input type="radio" id="{{../../_id}}-{{attribute_name}}-exp-{{this}}"
                  name="system.attributes.{{attribute_name}}.exp" value="{{this}}">
           <label for="{{../../_id}}-{{attribute_name}}-exp-{{this}}"></label>
-        {{/times_from_1}}
+        {{/times_from}}
         {{/multiboxes}}
       </div>
     </div>
@@ -33,11 +34,23 @@
 
         {{#multiboxes skill.value}}
 
-        {{#times_from_0 skill.max}}
-        <input type="radio" id="attributes-{{../../../_id}}-{{skill_name}}-{{this}}"
-               name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
-        <label for="attributes-{{../../../_id}}-{{skill_name}}-{{this}}"></label>
-        {{/times_from_0}}
+        {{#times_from 0 skill.max}}
+        <input {{#if (lteq this (oneless skill.min))}}disabled {{/if}}
+			type="radio" id="attributes-{{../../../_id}}-{{skill_name}}-{{this}}" data-dtype="Number"
+            name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
+        <label {{#if (and (gt skill.min 0) (lteq this skill.min))}}
+			data-tooltip="{{localize "BITD.DisabledByAE"}}" 
+			{{/if}}
+			{{#if (lteq this (oneless skill.min))}}style="filter: unset; opacity: unset; cursor: unset;" 
+			{{/if}}
+		for="attributes-{{../../../_id}}-{{skill_name}}-{{this}}"></label>
+        {{/times_from}}
+		
+		{{#if (eq skill.max 3)}}
+		    <input type="radio" id="attributes-{{../../../_id}}-{{skill_name}}-{{this}}" data-dtype="Number"
+            name="system.attributes.{{attribute_name}}.skills.{{skill_name}}.value" value="{{this}}">
+			<label data-tooltip="{{localize "BITD.NoMastery"}}" style="filter: unset; opacity: unset; cursor: unset; background-color: #dadbed; border-color: gray"></label>
+		{{/if}}
 
         <div class="attribute-skill-label roll-die-attribute rollable-text" data-roll-attribute="{{skill_name}}">{{localize skill.label}}</div>
         {{/multiboxes}}

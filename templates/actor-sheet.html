@@ -122,11 +122,11 @@
       <input type="radio" id="character-{{_id}}-stress-0" name="system.stress.value" value="0" dtype="Radio">
       <label class="black-label" for="character-{{_id}}-stress-0">{{localize system.stress.name}}</label>
 
-      {{#times_from_1 system.stress.max}}
+      {{#times_from 1 system.stress.max}}
         <input type="radio" id="character-{{../_id}}-stress-{{this}}" name="system.stress.value" value="{{this}}"
                dtype="Radio">
         <label for="character-{{../_id}}-stress-{{this}}"></label>
-      {{/times_from_1}}
+      {{/times_from}}
 
       {{/multiboxes}}
 
@@ -138,10 +138,10 @@
         <div id="character-{{_id}}-trauma-teeth" class="small-teeth">
           <input type="radio" id="character-{{_id}}-trauma-counter-0" name="system.trauma.value" value="0">
 
-          {{#times_from_1 system.trauma.max}}
+          {{#times_from 1 system.trauma.max}}
             <input type="radio" id="character-{{../_id}}-trauma-counter-{{this}}" name="system.trauma.value" value="{{this}}" disabled>
             <label for="character-{{../_id}}-trauma-counter-{{this}}"></label>
-          {{/times_from_1}}
+          {{/times_from}}
         </div>
       </div>
       {{/traumacounter}}
@@ -273,10 +273,10 @@
             <label for="character-{{_id}}-experience-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
             {{#multiboxes system.experience}}
             <input type="radio" id="character-{{_id}}-experience-0" name="system.experience" value="0" dtype="Radio">
-            {{#times_from_1 system.experience_max}}
+            {{#times_from 1 system.experience_max}}
             <input type="radio" id="character-{{_id}}-experience-{{this}}" name="system.experience" value="{{this}}" dtype="Radio">
             <label for="character-{{_id}}-experience-{{this}}"></label>
-            {{/times_from_1}}
+            {{/times_from}}
             {{/multiboxes}}
           </div>
         </div>

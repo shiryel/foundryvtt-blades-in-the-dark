@@ -46,9 +46,11 @@ export class BladesActor extends Actor {
     dice_amount['BITD.Vice'] = 4;
 
     for (var attribute_name in this.system.attributes) {
-      dice_amount[attribute_name] = 0;
+      //dice_amount[attribute_name] = 0;
+	  dice_amount[attribute_name] = this.system.attributes[attribute_name].bonus;
       for (var skill_name in this.system.attributes[attribute_name].skills) {
-        dice_amount[skill_name] = parseInt(this.system.attributes[attribute_name].skills[skill_name]['value'][0])
+       // dice_amount[skill_name] = parseInt(this.system.attributes[attribute_name].skills[skill_name]['value'][0])
+        dice_amount[skill_name] = parseInt(this.system.attributes[attribute_name].skills[skill_name]['value'])
 
         // We add a +1d for every skill higher than 0.
         if (dice_amount[skill_name] > 0) {
