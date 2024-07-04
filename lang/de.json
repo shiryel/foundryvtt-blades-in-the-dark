@@ -55,6 +55,7 @@
   "BITD.Adversaries": "Störend",
   "BITD.Enemies": "Feinde",
   "BITD.AtWar": "Krieg",
+  "BITD.Defeated": "Defeated",
   "BITD.Trauma": "Trauma",
   "BITD.TraumaCold": "Kalt",
   "BITD.TraumaHaunted": "Heimgesucht",
@@ -113,7 +114,7 @@
   "BITD.ClassExpClue3": "Du hast mit Auswirkungen deiner Laster oder Traumata zu kämpfen gehabt.",
   "BITD.ClassExpClueDescription": "Trage am Ende der Sitzung für jeden Auslöser 1 EP ein (im Charakterbuch oder einem Attribut). Trage 2 EP ein, wenn er mehrfach vorgekommen ist.",
   "BITD.Turf": "Revier",
-  "BITD.Turfs": "Reviere",
+  "BITD.Claims": "Reviere",
   "BITD.Lair": "Versteck",
   "BITD.Coin": "Münzen",
   "BITD.Coins": "Münzen",
@@ -306,6 +307,10 @@
   "BITD.RollAcquireAssetCritical": "Exceptional result.",
   "BITD.RollAcquireAssetSuccess": "Good result.",
   "BITD.RollAcquireAssetPartialSuccess": "Mixed result.",
-  "BITD.RollAcquireAssetFailure": "Bad result."
+  "BITD.RollAcquireAssetFailure": "Bad result.",
+
+  "BITD.Short": "Short",
+  "BITD.Full": "Full",
+  "BITD.Associated": "Associated"
 
 }

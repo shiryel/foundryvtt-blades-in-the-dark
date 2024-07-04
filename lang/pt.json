@@ -55,6 +55,7 @@
 	"BITD.Adversaries": "Adversários",
 	"BITD.Enemies": "Inimigos",
 	"BITD.AtWar": "Em Guerra!",
+	"BITD.Defeated": "Defeated",
 	"BITD.Trauma": "Trauma",
 	"BITD.TraumaCold": "Frio",
 	"BITD.TraumaHaunted": "Assombrado",
@@ -113,7 +114,7 @@
 	"BITD.ClassExpClue3": "Você enfrentou problemas causados pelo vício ou trauma durante a sessão.",
 	"BITD.ClassExpClueDescription": "Ao fim de cada sessão, para cada item abaixo, marque 1xp (na sua classe ou num atributo) ou 2xp se for um elemento que ocorreu múltiplas vezes.",
 	"BITD.Turf": "Território",
-	"BITD.Turfs": "Território",
+	"BITD.Claims": "Território",
 	"BITD.Lair": "Covil",
 	"BITD.Coin": "Moeda",
 	"BITD.Coins": "Moedas",
@@ -285,5 +286,9 @@
 	"BITD.RollAcquireAssetCritical": "Exceptional result.",
 	"BITD.RollAcquireAssetSuccess": "Good result.",
 	"BITD.RollAcquireAssetPartialSuccess": "Mixed result.",
-	"BITD.RollAcquireAssetFailure": "Bad result."
+	"BITD.RollAcquireAssetFailure": "Bad result.",
+
+    "BITD.Short": "Short",
+    "BITD.Full": "Full",
+    "BITD.Associated": "Associated"
 }

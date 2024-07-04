@@ -107,7 +107,7 @@ Hooks.once("init", async function() {
       }
     }
 
-    if (count > 4) count = 4;
+    //if (count > 4) count = 4;
 
     const rgx = new RegExp(' value=\"' + count + '\"');
     return html.replace(rgx, "$& checked");
@@ -117,6 +117,20 @@ Hooks.once("init", async function() {
   // NotEquals handlebar.
   Handlebars.registerHelper('noteq', (a, b, options) => {
     return (a !== b) ? options.fn(this) : '';
+  });
+
+  //Less than comparison
+  Handlebars.registerHelper('lteq', (a, b) => {
+    return (a <= b);
+  });
+
+  //Greater than comparison
+  Handlebars.registerHelper('gteq', (a, b) => {
+    return (a >= b);
+  });
+
+  Handlebars.registerHelper('oneless', (a) => {
+    return (a - 1);
   });
 
   // ReputationTurf handlebar.
@@ -166,13 +180,7 @@ Hooks.once("init", async function() {
     return new Handlebars.SafeString(text);
   });
 
-  // "N Times" loop for handlebars.
-  //  Block is executed N times starting from n=1.
-  //
-  // Usage:
-  // {{#times_from_1 10}}
-  //   <span>{{this}}</span>
-  // {{/times_from_1}}
+  // times_from_1 left as legacy code to not break Alternate Sheets compatibility
   Handlebars.registerHelper('times_from_1', function(n, block) {
 
     var accum = '';
@@ -182,17 +190,27 @@ Hooks.once("init", async function() {
     return accum;
   });
 
-  // "N Times" loop for handlebars.
-  //  Block is executed N times starting from n=0.
-  //
-  // Usage:
-  // {{#times_from_0 10}}
-  //   <span>{{this}}</span>
-  // {{/times_from_0}}
+  // times_from_0 left as legacy code to not break Alternate Sheets compatibility
   Handlebars.registerHelper('times_from_0', function(n, block) {
 
     var accum = '';
     for (var i = 0; i <= n; ++i) {
+      accum += block.fn(i);
+    }
+    return accum;
+  });
+
+  // "N Times" loop for handlebars.
+  //  Block is executed N times starting from start.
+  //
+  // Usage:
+  // {{#times_from 1 10}}
+  //   <span>{{this}}</span>
+  // {{/times_from}}
+  Handlebars.registerHelper('times_from', function(start, n, block) {
+
+    let accum = '';
+    for (let i = start; i <= n; ++i) {
       accum += block.fn(i);
     }
     return accum;

@@ -77,6 +77,25 @@
                 {{/if}}
             {{/each}}
           </div>
+		
+		<div class="item-block flex-horizontal">
+          <div class="item-class-label"><a class="item-add-popup" data-distinct="true" data-item-type="crew">{{localize "BITD.CrewName"}}</a></div> 
+          {{#each system.crew as |item id|}}
+            {{#unless (eq item.name undefined)}}
+              <div class="item flex-horizontal" data-item-id="{{item.id}}" data-item-type="{{item.type}}">
+                <div class="open-friend flex-horizontal" style="margin-right: 10px">
+                  <img src="{{item.img}}" title="{{item.name}}" width="24" height="24" style="margin-right: 10px"/>
+                  <div>
+                    <a class="open-friend">{{item.name}}</a>
+                  </div>
+                </div>
+                <a class="crew-delete" title="{{localize 'BITD.TitleDeleteItem'}}"><i class="fas fa-trash"></i></a>
+				<a style="visibility:hidden" class="item-control item-post" title="{{localize 'BITD.TitlePostItem'}}"><i class="fas fa-comment"></i></a>
+              </div>
+            {{/unless}}
+          {{/each}}
+
+          </div>
 
       </div>
     </div>
@@ -103,11 +122,11 @@
       <input type="radio" id="character-{{_id}}-stress-0" name="system.stress.value" value="0" dtype="Radio">
       <label class="black-label" for="character-{{_id}}-stress-0">{{localize system.stress.name}}</label>
 
-      {{#times_from_1 system.stress.max}}
+      {{#times_from 1 system.stress.max}}
         <input type="radio" id="character-{{../_id}}-stress-{{this}}" name="system.stress.value" value="{{this}}"
                dtype="Radio">
         <label for="character-{{../_id}}-stress-{{this}}"></label>
-      {{/times_from_1}}
+      {{/times_from}}
 
       {{/multiboxes}}
 
@@ -119,10 +138,10 @@
         <div id="character-{{_id}}-trauma-teeth" class="small-teeth">
           <input type="radio" id="character-{{_id}}-trauma-counter-0" name="system.trauma.value" value="0">
 
-          {{#times_from_1 system.trauma.max}}
+          {{#times_from 1 system.trauma.max}}
             <input type="radio" id="character-{{../_id}}-trauma-counter-{{this}}" name="system.trauma.value" value="{{this}}" disabled>
             <label for="character-{{../_id}}-trauma-counter-{{this}}"></label>
-          {{/times_from_1}}
+          {{/times_from}}
         </div>
       </div>
       {{/traumacounter}}
@@ -254,10 +273,10 @@
             <label for="character-{{_id}}-experience-0"><i class="fab fa-creative-commons-zero nullifier"></i></label>
             {{#multiboxes system.experience}}
             <input type="radio" id="character-{{_id}}-experience-0" name="system.experience" value="0" dtype="Radio">
-            {{#times_from_1 system.experience_max}}
+            {{#times_from 1 system.experience_max}}
             <input type="radio" id="character-{{_id}}-experience-{{this}}" name="system.experience" value="{{this}}" dtype="Radio">
             <label for="character-{{_id}}-experience-{{this}}"></label>
-            {{/times_from_1}}
+            {{/times_from}}
             {{/multiboxes}}
           </div>
         </div>

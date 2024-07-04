@@ -32,13 +32,12 @@ export class BladesCrewSheet extends BladesSheet {
     sheetData.effects = BladesActiveEffect.prepareActiveEffectCategories(this.actor.effects);
 
     // Calculate Turfs amount.
-    // We already have Lair, so set to -1.
-    let turfs_amount = 0
+    let turfs_amount = 0;
+	let turfs_max = sheetData.system.turf.max;
 
     sheetData.items.forEach(item => {
 
       if (item.type === "crew_type") {
-        // Object.entries(item.data.turfs).forEach(turf => {turfs_amount += (turf.value === true) ? 1 : 0});
         Object.entries(item.system.turfs).forEach(([key, turf]) => {
           if (turf.name === 'BITD.Turf') {
             turfs_amount += (turf.value === true) ? 1 : 0;
@@ -47,9 +46,14 @@ export class BladesCrewSheet extends BladesSheet {
       }
 
     });
+	
+	turfs_amount = turfs_amount + sheetData.system.turf.bonus;
+	if (turfs_amount > turfs_max) {turfs_amount = turfs_max;};
     sheetData.system.turfs_amount = turfs_amount;
-
+	
+	//return data
     return sheetData;
+	
   }
   
   /** @override **/
@@ -71,6 +75,8 @@ export class BladesCrewSheet extends BladesSheet {
         break;
       case "item":
         break;
+      case "crew_type":
+        break;
       case "ability":
         break;
       case "class":
@@ -90,6 +96,7 @@ export class BladesCrewSheet extends BladesSheet {
 
     // Add Crew Type
     html.find(".crew-class").click(this._onItemAddClick.bind(this));
+
 
     // Update Inventory Item
     html.find('.item-sheet-open').click(ev => {

@@ -55,6 +55,7 @@
   "BITD.Adversaries": "Adversaries",
   "BITD.Enemies": "Enemies",
   "BITD.AtWar": "At War!",
+  "BITD.Defeated": "Defeated",
   "BITD.Trauma": "Trauma",
   "BITD.TraumaCold": "Cold",
   "BITD.TraumaHaunted": "Haunted",
@@ -113,7 +114,7 @@
   "BITD.ClassExpClue3": "You struggled with issues from your vice or traumas during the session.",
   "BITD.ClassExpClueDescription": "At the end of each session, for each item below, mark 1 xp (in your playbook or an attribute) or 2 xp if that item occurred multiple times.",
   "BITD.Turf": "Turf",
-  "BITD.Turfs": "Turfs",
+  "BITD.Claims": "Claims",
   "BITD.Lair": "Lair",
   "BITD.Coin": "Coin",
   "BITD.Coins": "Coins",
@@ -308,6 +309,12 @@
   "BITD.RollAcquireAssetCritical": "Exceptional result.",
   "BITD.RollAcquireAssetSuccess": "Good result.",
   "BITD.RollAcquireAssetPartialSuccess": "Mixed result.",
-  "BITD.RollAcquireAssetFailure": "Bad result."
+  "BITD.RollAcquireAssetFailure": "Bad result.",
+
+  "BITD.Short": "Short",
+  "BITD.Full": "Full",
+  "BITD.Associated": "Associated",
+  "BITD.DisabledByAE": "Minimum Value set by an Active Effect",
+  "BITD.NoMastery": "This Scoundrel lacks Mastery"
 
 }

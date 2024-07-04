@@ -76,11 +76,38 @@ export class BladesActorSheet extends BladesSheet {
     // catch unmigrated actor data
     for( const a in sheetData.system.attributes ) {
       for( const s in sheetData.system.attributes[a].skills ) {
-        if( sheetData.system.attributes[a].skills[s].max === undefined ){
-          sheetData.system.attributes[a].skills[s].max = 4;
+        if( sheetData.system.attributes[a].skills[s].max === undefined || sheetData.system.attributes[a].skills[s].max === 4){
+          sheetData.system.attributes[a].skills[s].max = 3;
         }
+		
+		//include Active Effect alterations to skill minimums
+		if( sheetData.system.attributes[a].skills[s].value <= sheetData.system.attributes[a].skills[s].min ) { 
+			sheetData.system.attributes[a].skills[s].value = sheetData.system.attributes[a].skills[s].min;
+		}
       }
     }
+	
+	//check for additional stress, trauma, and mastery from crew
+		//check for a crew and get its data
+		if (sheetData.system.crew.length > 0){
+			let crew_id = sheetData.system.crew[0].id;
+			let crew_actor = game.actors.get(crew_id);
+			//add to max stress
+			sheetData.system.stress.max = sheetData.system.stress.max + crew_actor.system.scoundrel.add_stress;
+			//add to max trauma
+			sheetData.system.trauma.max = sheetData.system.trauma.max + crew_actor.system.scoundrel.add_trauma;
+			//check for mastery
+			let has_mastery = crew_actor.system.scoundrel.mastery;
+			if (has_mastery) {
+				for( const b in sheetData.system.attributes ) {
+					for( const t in sheetData.system.attributes[b].skills ) {
+						if (sheetData.system.attributes[b].skills[t].max === 3) {
+							sheetData.system.attributes[b].skills[t].max = 4;
+						}
+					}
+				}
+			}
+		}
 
     return sheetData;
   }
@@ -111,6 +138,9 @@ export class BladesActorSheet extends BladesSheet {
     switch (droppedEntityFull.type) {
       case "npc":
         await BladesHelpers.addAcquaintance(this.actor, droppedEntityFull);
+        break;
+	  case "crew":
+        await BladesHelpers.addCrew(this.actor, droppedEntityFull);
         break;
       case "item":
         break;
@@ -193,6 +223,15 @@ export class BladesActorSheet extends BladesSheet {
 	  BladesHelpers.import_pb_contacts(this.actor, playbook);
 
     });
+	
+		// Remove Crew from character sheet
+    html.find('.crew-delete').click(ev => {
+	  const element = $(ev.currentTarget).parents(".item");
+	  let crewId = element.data("itemId");
+	  BladesHelpers.removeCrew(this.actor, crewId);
+    });
+
+	
   }
 
 }

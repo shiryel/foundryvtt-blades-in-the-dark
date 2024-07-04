@@ -55,6 +55,7 @@
   "BITD.Adversaries": "Adversaires",
   "BITD.Enemies": "Ennemis",
   "BITD.AtWar": "En Guerre !",
+  "BITD.Defeated": "Defeated",
   "BITD.Trauma": "Trauma",
   "BITD.TraumaCold": "Insensible",
   "BITD.TraumaHaunted": "Hanté",
@@ -112,7 +113,7 @@
   "BITD.ClassExpClue2": "Vous avez exprimé vos croyances, pulsions, origines ou antécédents.",
   "BITD.ClassExpClue3": "Vous vous êtes débattu avec des problèmes liés à vos vices ou traumatismes.",
   "BITD.ClassExpClueDescription": "À la fin de chaque session de jeu, gagnez 1 px (dans une caractéristique ou sur la jauge du livret) par critère rempli ou 2 px si cela s’est produit plusieurs fois.",
-  "BITD.Turf": "Domaine",
+  "BITD.Claims": "Domaine",
   "BITD.Turfs": "Domaines",
   "BITD.Lair": "Repaire",
   "BITD.Coin": "Lingot",
@@ -294,6 +295,10 @@
   "BITD.RollAcquireAssetCritical": "Résultat exceptionnel.",
   "BITD.RollAcquireAssetSuccess": "Bon résultat.",
   "BITD.RollAcquireAssetPartialSuccess": "Résultat mitigé.",
-  "BITD.RollAcquireAssetFailure": "Mauvais résultat."
+  "BITD.RollAcquireAssetFailure": "Mauvais résultat.",
+
+  "BITD.Short": "Short",
+  "BITD.Full": "Full",
+  "BITD.Associated": "Associated"
 
 }

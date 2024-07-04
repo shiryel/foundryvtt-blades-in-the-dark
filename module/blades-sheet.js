@@ -96,7 +96,13 @@ export class BladesSheet extends ActorSheet {
       items_to_add.push(items.find(e => e._id === $(this).val()));
     });
 
-    await Item.create(items_to_add, {parent: this.document});
+    if (item_type == "crew") {
+		let actor = this.actor;
+		await BladesHelpers.addCrew(actor,items_to_add[0]);
+	}
+	else {
+		await Item.create(items_to_add, {parent: this.document});
+	}
   }
   /* -------------------------------------------- */
 

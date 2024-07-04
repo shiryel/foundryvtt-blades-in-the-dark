@@ -59,7 +59,8 @@ export class BladesHelpers {
    * @param {string} item_type
    * @param {Object} game
    */
-  static async getAllItemsByType(item_type, game) {
+/** //Accidentally duplicated this code before; I don't know if it works any differently 
+ static async getAllItemsByType(item_type, game) {
 
     let list_of_items = [];
     let game_items = [];
@@ -72,6 +73,35 @@ export class BladesHelpers {
     compendium_items = compendium_content.map(e => {return e.toObject()});
 
     list_of_items = game_items.concat(compendium_items);
+    list_of_items.sort(function(a, b) {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+      return nameA.localeCompare(nameB);
+    });
+    return list_of_items;
+
+  }
+**/
+  static async getAllItemsByType(item_type) {
+
+    let list_of_items = [];
+    let world_items = [];
+    let compendium_items = [];
+
+    if(item_type === "npc" || item_type === "crew"){
+      world_items = game.actors.filter(e => e.type === item_type).map(e => {return e});
+    }
+    else{
+      world_items = game.items.filter(e => e.type === item_type).map(e => {return e});
+    }
+
+	if (item_type !="crew") {
+    let pack = game.packs.find(e => e.metadata.name === item_type);
+    let compendium_content = await pack.getDocuments();
+    compendium_items = compendium_content.map(e => {return e});
+    list_of_items = world_items.concat(compendium_items);
+	} else {list_of_items = world_items;}
+	
     list_of_items.sort(function(a, b) {
       let nameA = a.name.toUpperCase();
       let nameB = b.name.toUpperCase();
@@ -219,33 +249,6 @@ export class BladesHelpers {
 	await actor.update({system: {acquaintances : updated_acquaintances}});
   }
 
-  static async getAllItemsByType(item_type) {
-
-    let list_of_items = [];
-    let world_items = [];
-    let compendium_items = [];
-
-    if(item_type === "npc"){
-      world_items = game.actors.filter(e => e.type === item_type).map(e => {return e});
-    }
-    else{
-      world_items = game.items.filter(e => e.type === item_type).map(e => {return e});
-    }
-
-    let pack = game.packs.find(e => e.metadata.name === item_type);
-    let compendium_content = await pack.getDocuments();
-    compendium_items = compendium_content.map(e => {return e});
-
-    list_of_items = world_items.concat(compendium_items);
-    list_of_items.sort(function(a, b) {
-      let nameA = a.name.toUpperCase();
-      let nameB = b.name.toUpperCase();
-      return nameA.localeCompare(nameB);
-    });
-    return list_of_items;
-
-  }
-
   static async getSourcedItemsByType(item_type){
       const limited_items = await this.getAllItemsByType(item_type);
     return limited_items;
@@ -278,5 +281,34 @@ export class BladesHelpers {
 	  await this.addAcquaintance(actor, new_acq);
 	  i++;}
 	}
+	
+	// adds a crew to the character
+	static async addCrew(actor, dropped_crew){
+		let current_crew = actor.system.crew;
+		let new_crew = {
+			id : dropped_crew.id,
+			name : dropped_crew.name,
+			description : dropped_crew.system.description,
+			img : dropped_crew.img
+		};
+		
+		let unique_id =  !current_crew.some((oldAcq) => {
+			return oldAcq.id == dropped_crew.id;
+		});
+		
+		if (unique_id) {
+			actor.update ({system: {crew : [new_crew]}});
 
+		} 
+		else {
+			ui.notifications.info("The dropped Crew is the current crew of this character.");
+		}
+	}
+	
+	// removes a crew from the character
+	static async removeCrew(actor, crewId){
+    let current_crew = actor.system.crew;
+    let updated_crew = current_crew.filter(acq => acq._id !== crewId && acq.id !== crewId);
+	await actor.update({system: {crew : updated_crew}});
+  }
 }

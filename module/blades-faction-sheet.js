@@ -20,7 +20,7 @@ export class BladesFactionSheet extends BladesSheet {
   /* -------------------------------------------- */
 
   /** @override */
-  getData(options) {
+  async getData(options) {
     const superData = super.getData( options );
     const sheetData = superData.data;
     sheetData.owner = superData.owner;

@@ -54,6 +54,7 @@
   "BITD.Adversaries": "Adversaries",
   "BITD.Enemies": "Enemies",
   "BITD.AtWar": "At War!",
+  "BITD.Defeated": "Defeated",
   "BITD.Trauma": "Trauma",
   "BITD.TraumaCold": "Nieczuły",
   "BITD.TraumaHaunted": "Nawiedzony",
@@ -112,7 +113,7 @@
   "BITD.ClassExpClue3": "Zmierzyłeś się z problemami wynikającymi z twojej słabości lub traum.",
   "BITD.ClassExpClueDescription": "Pod koniec każdej sesji zaznacz 1 pd (w księdze łotra lub przy dowolnej cesze) za każdy poniższy wyzwalacz, który pojawił się podczas gry, lub 2 pd, jeśli wystąpił on wielokrotnie.",
   "BITD.Turf": "Teren",
-  "BITD.Turfs": "Tereny",
+  "BITD.Claims": "Tereny",
   "BITD.Lair": "Kryjówka",
   "BITD.Coin": "Dukat",
   "BITD.Coins": "Dukaty",
@@ -302,6 +303,10 @@
   "BITD.RollAcquireAssetCritical": "Exceptional result.",
   "BITD.RollAcquireAssetSuccess": "Good result.",
   "BITD.RollAcquireAssetPartialSuccess": "Mixed result.",
-  "BITD.RollAcquireAssetFailure": "Bad result."
+  "BITD.RollAcquireAssetFailure": "Bad result.",
+
+  "BITD.Short": "Short",
+  "BITD.Full": "Full",
+  "BITD.Associated": "Associated"
 
 }

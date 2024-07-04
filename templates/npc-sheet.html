@@ -7,36 +7,36 @@
 		<input type="text" id="character-{{_id}}-name" name="name" value="{{name}}" placeholder="{{localize 'BITD.Name'}}">
 	</div>
 	<div class="flex-horizontal">
-		<label class="text-line" for="character-{{_id}}-short-description">Short {{localize 'BITD.Description'}}:</label>
+		<label class="text-line" for="character-{{_id}}-short-description">{{localize 'BITD.Short'}} {{localize 'BITD.Description'}}:</label>
 		<input type="text" id="character-{{_id}}-short-description" name="system.description_short" value="{{system.description_short}} ">
 
 	</div>
 	<div class="flex-horizontal">
-		<label class="text-line" for="character-{{_id}}-associated-class">Associated {{localize 'BITD.Class'}}:</label>
+		<label class="text-line" for="character-{{_id}}-associated-class">{{localize 'BITD.Associated'}} {{localize 'BITD.Class'}}:</label>
 		<input type="text" id="character-{{_id}}-associated-class" name="system.associated_class" value="{{system.associated_class}} ">
 
 	</div>
 	<div class="flex-horizontal">
-		<label class="text-line" for="character-{{_id}}-description">Full {{localize 'BITD.Description'}}:</label>
-		<input type="text" id="character-{{_id}}-description" name="system.description" value="{{system.description}}" >
+		<label class="text-line" for="character-{{_id}}-description">{{localize 'BITD.Full'}} {{localize 'BITD.Description'}}:</label>
+		<textarea rows="2" id="character-{{_id}}-description" name="system.description">{{system.description}}</textarea>
 
 	</div>
 	<div class="flex-horizontal">
-		<label class="text-line" for="character-{{_id}}-associated-crew-type">Associated {{localize 'BITD.CrewType'}}:</label>
+		<label class="text-line" for="character-{{_id}}-associated-crew-type">{{localize 'BITD.Associated'}} {{localize 'BITD.CrewType'}}:</label>
 		<input type="text" id="character-{{_id}}-associated-crew-type" name="system.associated_crew_type" value="{{system.associated_crew_type}} ">
 
 	</div>
 	<div class="flex-horizontal">
-		<label class="text-line" for="character-{{_id}}-notes">{{localize 'BITD.Notes'}}:</label>
-		<input type="text" id="character-{{_id}}-notes" name="system.notes" value="{{system.notes}} ">
-
-	</div>
-	<div class="flex-horizontal">
-		<label class="text-line" for="character-{{_id}}-associated-faction">Associated {{localize 'BITD.Faction'}}:</label>
+		<label class="text-line" for="character-{{_id}}-associated-faction">{{localize 'BITD.Associated'}} {{localize 'BITD.Faction'}}:</label>
 		<input type="text" id="character-{{_id}}-associated-faction" name="system.associated_faction" value="{{system.associated_faction}}" >
 
 	</div>
-  </section>
+	<div class="flex-horizontal">
+		<label class="text-line" for="character-{{_id}}-notes">{{localize 'BITD.Notes'}}:</label>
+		<textarea rows="2" id="character-{{_id}}-notes" name="system.notes">{{system.notes}}</textarea>
+
+	</div>
+	</section>
   </section>
 </form>
 

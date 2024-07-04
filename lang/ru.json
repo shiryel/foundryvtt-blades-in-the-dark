@@ -55,6 +55,7 @@
   "BITD.Adversaries": "Adversaries",
   "BITD.Enemies": "Enemies",
   "BITD.AtWar": "At War!",
+  "BITD.Defeated": "Defeated",
   "BITD.Trauma": "Травма",
   "BITD.TraumaCold": "Социопат",
   "BITD.TraumaHaunted": "Визионер",
@@ -114,7 +115,7 @@
   "BITD.ClassExpClue3": "Ты сталкивался с проблемами из-за своей страсти или травм.",
   "BITD.ClassExpClueDescription": "В конце встречи отметь в любой характеристике или шкале талантов за каждый элемент из списка ниже 1 пункт опыта, если событие произошло хотя бы раз, или 2 пункта опыта, если многократно.",
   "BITD.Turf": "Актив",
-  "BITD.Turfs": "Активы",
+  "BITD.Claims": "Активы",
   "BITD.Lair": "Логово",
   "BITD.Coin": "Монета",
   "BITD.Coins": "Монеты",
@@ -299,5 +300,9 @@
   "BITD.RollAcquireAssetCritical": "Exceptional result.",
   "BITD.RollAcquireAssetSuccess": "Good result.",
   "BITD.RollAcquireAssetPartialSuccess": "Mixed result.",
-  "BITD.RollAcquireAssetFailure": "Bad result."
+  "BITD.RollAcquireAssetFailure": "Bad result.",
+
+  "BITD.Short": "Short",
+  "BITD.Full": "Full",
+  "BITD.Associated": "Associated"
 }
