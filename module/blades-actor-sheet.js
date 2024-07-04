@@ -101,7 +101,9 @@ export class BladesActorSheet extends BladesSheet {
 			if (has_mastery) {
 				for( const b in sheetData.system.attributes ) {
 					for( const t in sheetData.system.attributes[b].skills ) {
-						sheetData.system.attributes[b].skills[t].max++;
+						if (sheetData.system.attributes[b].skills[t].max === 3) {
+							sheetData.system.attributes[b].skills[t].max = 4;
+						}
 					}
 				}
 			}
