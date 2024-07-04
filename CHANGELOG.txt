@@ -5,6 +5,7 @@ v.5.2.0
 - Updated NPC sheet to enable longer notes and descriptions (#11)
 - Enabled linking Characters to a crew and inheriting bonuses to max trauma, stress, and action ratings
 - Enabled active effects to affect action ratings on character sheet
+- Added Italian Language (#9)
 
 v.5.1.2
 - Fixed Dice-So-Nice Integration for Foundry v11
