@@ -58,6 +58,11 @@
       "lang": "pt",
       "name": "Portuguese",
       "path": "lang/pt.json"
+    },
+    {
+      "lang": "it",
+      "name": "Italian",
+      "path": "lang/it.json"
     }
   ],
   "packs": [
