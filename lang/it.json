@@ -308,6 +308,12 @@
   "BITD.RollAcquireAssetCritical": "Risultato Eccezionale.",
   "BITD.RollAcquireAssetSuccess": "Risultato Buono.",
   "BITD.RollAcquireAssetPartialSuccess": "Risultato Misto.",
-  "BITD.RollAcquireAssetFailure": "Risultato Negativo."
+  "BITD.RollAcquireAssetFailure": "Risultato Negativo.",
+
+  "BITD.Short": "Corto",
+  "BITD.Full": "Pieno",
+  "BITD.Associated": "Associato",
+  "BITD.DisabledByAE": "Valore Minimo impostato da un Effetto Attivo",
+  "BITD.NoMastery": "Questo Mascalzone non ha Maestria"
 
 }

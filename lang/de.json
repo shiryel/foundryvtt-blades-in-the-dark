@@ -311,6 +311,8 @@
 
   "BITD.Short": "Short",
   "BITD.Full": "Full",
-  "BITD.Associated": "Associated"
+  "BITD.Associated": "Associated",
+  "BITD.DisabledByAE": "Minimum Value set by an Active Effect",
+  "BITD.NoMastery": "This Scoundrel lacks Mastery"
 
 }
