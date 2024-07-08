@@ -14,16 +14,14 @@
 		<div class="clock-config-group">
 			<label for="system.type"><i class="fa fa-chart-pie"></i></label>
 			<select data-type="String" name="system.type">
-				{{#selectOptions this.sizeDropdown selected=system.type}}
-				{{/selectOptions}}
+				{{selectOptions this.sizeDropdown selected=system.type}}
 
 			</select>
 		</div>
 		<div class="clock-config-group">
 			<label for="system.color"><i class="fa fa-palette"></i></label>
 			<select data-type="String" name="system.color">
-				{{#selectOptions this.colorDropdown selected=system.color localize=true}}
-				{{/selectOptions}}
+				{{selectOptions this.colorDropdown selected=system.color localize=true}}
 
 			</select>
 		</div>

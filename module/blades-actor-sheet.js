@@ -108,6 +108,12 @@ export class BladesActorSheet extends BladesSheet {
 				}
 			}
 		}
+		
+	//check for healing minimums
+	let current_healing = parseInt(sheetData.system.healing_clock.value);
+	if (current_healing < sheetData.system.healing_clock.min) {
+		sheetData.system.healing_clock.value = sheetData.system.healing_clock.min;
+	}
 
     return sheetData;
   }
