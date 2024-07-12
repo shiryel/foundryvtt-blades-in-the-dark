@@ -224,7 +224,6 @@ export class BladesActor extends Actor {
   /* -------------------------------------------- */
   getComputedAttributes() {
     let attributes = this.system.attributes;
-    console.log(attributes);
     for( const a in attributes ) {
       for( const s in attributes[a].skills ) {
         if( attributes[a].skills[s].max === undefined || attributes[a].skills[s].max === 4){
@@ -278,5 +277,13 @@ export class BladesActor extends Actor {
       has_mastery = crew_actor.system.scoundrel.mastery;
     }
     return has_mastery
+  }
+  
+  getHealingMin(){
+	let current_healing = parseInt(this.system.healing_clock.value);
+	if (current_healing < this.system.healing_clock.min) {
+		current_healing = this.system.healing_clock.min;
+	}
+	return current_healing;
   }
 }
