@@ -75,13 +75,13 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
         effect_localize = 'BITD.EffectStandard'
     }
 
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/action-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/action-roll.html", {rolls: rolls, zeromode: zeromode, method: method, roll_status: roll_status, attribute_label: attribute_label, position: position, position_localize: position_localize, effect: effect, effect_localize: effect_localize, note: note});
   }
   // Check for Resistance roll
   else if (BladesHelpers.isAttributeAttribute(attribute_name)) {
     let stress = getBladesRollStress(rolls, zeromode);
 
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/resistance-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, stress: stress, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/resistance-roll.html", {rolls: rolls, zeromode: zeromode, method: method, roll_status: roll_status, attribute_label: attribute_label, stress: stress, note: note});
   }
   // Check for Indugle Vice roll
   else if (attribute_name == 'BITD.Vice') {
@@ -94,15 +94,15 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
       clear_stress = current_stress;
     }
 
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/vice-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, clear_stress: clear_stress, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/vice-roll.html", {rolls: rolls, zeromode: zeromode, method: method, roll_status: roll_status, attribute_label: attribute_label, clear_stress: clear_stress, note: note});
   }
   // Check for Gather Information roll
   else if (attribute_name == 'BITD.GatherInformation') {
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/gather-info-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/gather-info-roll.html", {rolls: rolls, zeromode: zeromode, method: method, roll_status: roll_status, attribute_label: attribute_label, note: note});
   }
   // Check for Engagement roll
   else if (attribute_name == 'BITD.Engagement') {
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/engagement-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/engagement-roll.html", {rolls: rolls, zeromode: zeromode, method: method, roll_status: roll_status, attribute_label: attribute_label, note: note});
   }
   // Check for Asset roll
   else if (attribute_name == 'BITD.AcquireAsset') {
@@ -124,11 +124,11 @@ async function showChatRollMessage(r, zeromode, attribute_name = "", position = 
         break;
     }
 
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/asset-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: attribute_label, tier_quality: tier_quality, note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/asset-roll.html", {rolls: rolls, zeromode: zeromode, method: method, roll_status: roll_status, attribute_label: attribute_label, tier_quality: tier_quality, note: note});
   }
   // Fortune roll if not specified
   else {
-    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/fortune-roll.html", {rolls: rolls, method: method, roll_status: roll_status, attribute_label: "BITD.Fortune", note: note});
+    result = await renderTemplate("systems/blades-in-the-dark/templates/chat/fortune-roll.html", {rolls: rolls, zeromode: zeromode, method: method, roll_status: roll_status, attribute_label: "BITD.Fortune", note: note});
   }
 
   let messageData;
@@ -279,7 +279,23 @@ export function getBladesRollVice(rolls, zeromode = false) {
  * Call a Roll popup.
  */
 export async function simpleRollPopup() {
-
+	//get stress and tier from selected token
+	let current_stress = 0;
+	let current_tier = 0;
+	let selected_tokens = canvas.tokens.controlled;
+	if (selected_tokens.length >0) {
+		let target_actor = game.actors.get(selected_tokens[0].document.actorId);
+		if (target_actor.type == "character") {
+			let current_crew = game.actors.get(target_actor.system.crew[0].id);
+			current_tier = parseInt(current_crew.system.tier);
+			current_stress = parseInt(target_actor.system.stress.value);
+		}
+		if (target_actor.type == "crew") {
+			current_tier = parseInt(target_actor.system.tier);
+		}
+	}
+	console.log("For the selected token, Stress is "+current_stress+" and Tier is "+current_tier);
+	
   new Dialog({
     title: `Simple Roll`,
     content: `
@@ -313,6 +329,7 @@ export async function simpleRollPopup() {
             <span style="width:200px">
               <label>${game.i18n.localize('BITD.Stress')}:</label>
               <select style="width:100px;float:right" id="stress" name="stress">
+				<option value="${current_stress}" selected disabled hidden>${current_stress}</option>
                 ${Array(11).fill().map((item, i) => `<option value="${i}">${i}</option>`).join('')}
               </select>
             </span>
@@ -322,6 +339,7 @@ export async function simpleRollPopup() {
             <span style="width:200px">
               <label>${game.i18n.localize('BITD.CrewTier')}:</label>
               <select style="width:100px;float:right" id="tier" name="tier">
+			  <option value="${current_tier}" selected disabled hidden>${current_tier}</option>
                 ${Array(5).fill().map((item, i) => `<option value="${i}">${i}</option>`).join('')}
               </select>
             </span>
