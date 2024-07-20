@@ -1,3 +1,10 @@
+v.5.3.0
+- Added a "0d" indicator to dice roll chat messages
+- Dice Roller inherits stress and tier from selected token (#4)
+- Replaced Select helper with SelectOptions helper
+- Expanded healing clock usage on character sheets
+- Migrated data preparation from actor-sheet to actor for module compatibility (#14)
+
 v.5.2.0
 - Added ability for turf to changed manually by active effects (#8)
 - NPC and Faction Status tokens now link to actors (#12)
