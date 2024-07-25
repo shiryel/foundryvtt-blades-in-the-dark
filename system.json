@@ -8,14 +8,15 @@
     "verified": "12.328"
   },
   "background": "systems/blades-in-the-dark/images/BITD_title.webp",
-  "url": "https://github.com/Dez384/foundryvtt-blades-in-the-dark/",
-  "manifest": "https://raw.githubusercontent.com/Dez384/foundryvtt-blades-in-the-dark/master/system.json",
-  "download": "https://github.com/Dez384/foundryvtt-blades-in-the-dark/archive/refs/tags/v5.3.0.zip",
+  "url": "https://github.com/shiryel/foundryvtt-blades-in-the-dark/",
+  "manifest": "https://raw.githubusercontent.com/shiryel/foundryvtt-blades-in-the-dark/master/system.json",
+  "download": "https://github.com/shiryel/foundryvtt-blades-in-the-dark/archive/refs/tags/v5.3.0.zip",
   "authors": [
     { "name": "megastruktur" },
     { "name": "drewg13" },
     { "name": "justinross" },
-    { "name": "Dez384" }
+    { "name": "Dez384" },
+    { "name": "Shiryel" }
   ],
   "esmodules": [
     "module/blades.js"
